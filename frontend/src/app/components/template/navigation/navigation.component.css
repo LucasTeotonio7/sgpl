@@ -1,0 +1,36 @@
+.sidenav{
+    background-color: #5928B1;
+    width: 200px;
+}
+
+.sidenav a{
+    color: #fff;
+}
+
+.sidenav i{
+    padding-right: 10px;
+}
+
+.content{
+    padding: 16px;
+    background-color: #fff;
+}
+
+.nav-list{
+    padding: 20px;
+}
+
+.nav-list .mat-list-item{
+    display: flex;
+    align-items: center;
+}
+
+
+@media (max-width: 700px){
+    .container{
+        display: none;
+    }
+    .container.active{
+        display: flex;
+    }
+}
