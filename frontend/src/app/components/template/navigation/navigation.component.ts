@@ -12,4 +12,10 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toggleMenu(){
+    const menuToggle = document.querySelector(".mat-list-item base");
+    menuToggle.classList.toggle("active");
+  }
+
+
 }
