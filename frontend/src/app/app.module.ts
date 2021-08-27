@@ -11,6 +11,8 @@ import { HomeComponent } from './views/home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ControleSemanalComponent } from './views/controle-semanal/controle-semanal.component';
+import { FornecedoresComponent } from './views/fornecedores/fornecedores.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { MatListModule } from '@angular/material/list';
     FooterComponent,
     NavigationComponent,
     HomeComponent,
+    ControleSemanalComponent,
+    FornecedoresComponent,
   ],
   imports: [
     BrowserModule,

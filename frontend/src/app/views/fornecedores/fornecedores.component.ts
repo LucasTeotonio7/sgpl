@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/components/template/header/header.service';
 
 @Component({
-  selector: 'sgpl-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'sgpl-fornecedores',
+  templateUrl: './fornecedores.component.html',
+  styleUrls: ['./fornecedores.component.css']
 })
-export class HomeComponent implements OnInit {
+export class FornecedoresComponent implements OnInit {
 
   constructor(private headerService: HeaderService) { 
     headerService.headerData = {
-      title: 'Inicio',
-      icon: 'home',
-      routeUrl: ''
+      title: 'Fornecedores',
+      icon: 'local_shipping',
+      routeUrl: 'fornecedores'
     }
   }
 
