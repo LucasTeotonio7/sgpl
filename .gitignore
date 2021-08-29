@@ -2,3 +2,4 @@ desktop.ini
 i-con.ico
 .vscode/settings.json
 backend/backend/settings.py
+backend/.env

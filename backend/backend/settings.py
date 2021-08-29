@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,10 +23,10 @@ GOOGLE_OAUTH2_CLIENT_ID = 'your-actual-client-id-value'
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@83r3!$=67f6fkb#@+gjtg_&wqm(f6b02=w49-zf^!#!rb-q56'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -76,9 +77,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'sgpl'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', 'admin'),
+        'NAME': os.environ.get('DB_NAME', config('DB_NAME')),
+        'USER': os.environ.get('DB_USER', config('DB_USER')),
+        'PASSWORD': os.environ.get('DB_PASS', config('DB_PASSWORD')),
         'HOST': 'localhost',
         'PORT': '5432',
     }
