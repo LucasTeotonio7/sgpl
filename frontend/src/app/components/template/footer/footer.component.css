@@ -1,0 +1,22 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+}
+
+.footer i{
+    margin-right: 5px;
+}
+
+.footer > span{
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 700px){
+    .footer {
+        justify-content: center;
+    }
+}
