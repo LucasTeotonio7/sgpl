@@ -1,10 +1,11 @@
 .sidenav{
-    background-color: #5928B1;
+    background-color: #fff;
     width: 200px;
+    padding: 10px;
 }
 
 .sidenav a{
-    color: #fff;
+    color: #777;
     font-size: 0.9rem;
 }
 
@@ -25,19 +26,24 @@
     display: flex;
     align-items: center;
     padding: 0px 5px;
-    
+
 }
 
 .nav-list .mat-list-item:hover{
-    background-color: #431f85;
+    color: #5928B1;
     transition: 0.6s;
 }
-    
-@media (max-width: 700px){
+
+
+.mat-list-text {
+    background: none !important;
+}
+
+/* @media (max-width: 700px){
     .container{
         display: none;
     }
     .container.active{
         display: flex;
     }
-}
+} */

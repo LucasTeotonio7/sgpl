@@ -1,12 +1,14 @@
 .header{
     display: flex;
     align-items: center;
+    background-color: #5928B1;
 }
 
 .header a{
     display: flex;
     align-items: center;
     text-decoration: none;
+    color: #fff;
 }
 
 .header .title-group{
