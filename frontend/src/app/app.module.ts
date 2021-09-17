@@ -12,7 +12,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ControleSemanalComponent } from './views/controle-semanal/controle-semanal.component';
-import { FornecedoresComponent } from './views/fornecedores/fornecedores.component';
+import { SupplierComponent } from './views/supplier/supplier.component';
+import { SupplierListComponent } from './components/supplier/supplier-list/supplier-list.component';
+import { SupplierFormComponent } from './components/supplier/supplier-form/supplier-form.component';
+import { SupplierDeleteComponent } from './components/supplier/supplier-delete/supplier-delete.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { FornecedoresComponent } from './views/fornecedores/fornecedores.compone
     NavigationComponent,
     HomeComponent,
     ControleSemanalComponent,
-    FornecedoresComponent,
+    SupplierComponent,
+    SupplierListComponent,
+    SupplierFormComponent,
+    SupplierDeleteComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ControleSemanalComponent } from './views/controle-semanal/controle-semanal.component';
-import { FornecedoresComponent } from './views/fornecedores/fornecedores.component';
 import { HomeComponent } from './views/home/home.component';
+import { SupplierComponent } from './views/supplier/supplier.component';
 
 const routes: Routes = [
   {
@@ -14,8 +14,8 @@ const routes: Routes = [
     component: ControleSemanalComponent
   },
   {
-    path: "fornecedores",
-    component: FornecedoresComponent
+    path: "supplier",
+    component: SupplierComponent
   }
 ];
 
