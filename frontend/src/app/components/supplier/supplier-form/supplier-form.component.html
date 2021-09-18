@@ -1,1 +1,33 @@
-<p>supplier-form works!</p>
+<mat-card>
+    <mat-card-title>
+        {{title}}
+    </mat-card-title>
+    <form>
+        <!-- <mat-form-field>
+            <input matInput placeholder="id do Fornecedor"
+            [(ngModel)]="supplier.id" name="idFornecedor">
+        </mat-form-field> -->
+        <mat-form-field>
+            <input matInput placeholder="Nome do Fornecedor"
+            [(ngModel)]="supplier.name" name="nomeFornecedor">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Cpf"
+            [(ngModel)]="supplier.cpf" name="cpf">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data de Adesão"
+            [(ngModel)]="supplier.dateOfJoining" name="data" type="date">
+        </mat-form-field>
+    </form>
+    <button *ngIf="supplier.id == null" mat-raised-button color='primary' (click)='createSupplier()'>
+        Salvar
+    </button>
+    <button *ngIf="supplier.id != null" mat-raised-button color='primary' (click)='updateSupplier()'>
+        Atualizar
+    </button>
+
+    <button mat-raised-button (click)='cancelar()'>
+        Cancelar
+    </button>
+</mat-card>

@@ -1,30 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from'@angular/material/snack-bar';
+import { Supplier } from '../components/supplier/supplier-list/supplier.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  readonly APIUrl = "http://127.0.0.1:8000";
+  readonly apiUrl = "http://127.0.0.1:8000";
 
-  constructor(private http: HttpClient) { }
+  constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
+
+  showMessage(msg: string, isError: boolean = false):void{
+    this.snackBar.open(msg,'X',{
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: isError ? ['msg-error'] : ['msg-success']
+    })
+  }
 
   getSupplierList(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIUrl + '/supplier/');
+    return this.http.get<any[]>(this.apiUrl + '/supplier/');
   }
 
-  addSupplier(val: any) {
-    return this.http.post(this.APIUrl + '/supplier/', val);
+  getSupplier(id: string): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/supplier/${id}`);
   }
 
-  updateSupplier(val: any) {
-    return this.http.put(this.APIUrl + '/supplier/', val);
+  addSupplier(supplier: Supplier) {
+    return this.http.post(this.apiUrl + '/supplier/', supplier);
   }
 
-  deleteSupplier(val: any) {
-    return this.http.delete(this.APIUrl + '/supplier/' + val);
+  updateSupplier(supplier: Supplier) {
+    return this.http.put(this.apiUrl + '/supplier/', supplier);
+  }
+
+  deleteSupplier(supplier: Supplier) {
+    return this.http.delete(`${this.apiUrl}/supplier/${supplier}`);
   }
 
 }

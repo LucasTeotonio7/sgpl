@@ -13,9 +13,14 @@ from django.core.files.storage import default_storage
 @csrf_exempt
 def supplierApi(request, id=0):
     if request.method == 'GET':
-        suppliers = Supplier.objects.all()
-        suppliers_serializer = SupplierSerializer(suppliers, many=True)
-        return JsonResponse(suppliers_serializer.data, safe=False)
+        if(id != 0):
+            supplier = Supplier.objects.get(id=id)
+            supplier_serializer = SupplierSerializer(supplier)
+            return JsonResponse(supplier_serializer.data, safe=False)
+        else:
+            suppliers = Supplier.objects.all().order_by('pk')
+            suppliers_serializer = SupplierSerializer(suppliers, many=True)
+            return JsonResponse(suppliers_serializer.data, safe=False)
 
     elif request.method == 'POST':
         suppliers_data = JSONParser().parse(request)
