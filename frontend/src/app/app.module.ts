@@ -17,6 +17,14 @@ import { SupplierListComponent } from './components/supplier/supplier-list/suppl
 import { SupplierFormComponent } from './components/supplier/supplier-form/supplier-form.component';
 import { SupplierDeleteComponent } from './components/supplier/supplier-delete/supplier-delete.component';
 
+import {FormsModule} from '@angular/forms';
+import { MatTableModule } from '@angular/material/table'
+import {HttpClientModule} from '@angular/common/http';
+
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +44,12 @@ import { SupplierDeleteComponent } from './components/supplier/supplier-delete/s
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    FormsModule,
+    MatTableModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

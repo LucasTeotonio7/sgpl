@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
+import { Supplier } from './supplier.model';
 
 @Component({
   selector: 'sgpl-supplier-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupplierListComponent implements OnInit {
 
-  constructor() { }
+  supplier: Supplier[] = [];
+
+  displayedColumns = ['id', 'name','cpf', 'dateOfJoining','action'];
+
+  constructor(private SharedService: SharedService) { }
 
   ngOnInit(): void {
+    this.SharedService.getSupplierList().subscribe(data => {
+      this.supplier = data;
+      console.log(data);
+    })
   }
 
 }

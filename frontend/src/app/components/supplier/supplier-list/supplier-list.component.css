@@ -1,0 +1,32 @@
+table{
+    width: 100%;
+    padding: 5%;
+}
+
+mat-paginator{
+    padding: 5%;
+}
+
+.edit{
+    margin-right: 10px;
+}
+
+.edit > i{
+    color: #d9cd26;
+}
+
+.delete > i{
+    color: #e35e6b;
+}
+
+@media (max-width:700px){
+
+    th,td{
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    td i{
+        font-size: 14px;
+    }
+}
