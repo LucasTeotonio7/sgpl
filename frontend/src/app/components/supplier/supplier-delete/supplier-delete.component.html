@@ -1,1 +1,26 @@
-<p>supplier-delete works!</p>
+<mat-card>
+    <mat-card-title>
+        Excluir Fornecedor
+    </mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome do Fornecedor"
+            [(ngModel)]="supplier.name" name="nomeFornecedor" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Cpf"
+            [(ngModel)]="supplier.cpf" name="cpf" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data de Adesão"
+            [(ngModel)]="supplier.dateOfJoining" name="data" type="date" disabled>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button color='primary' (click)='DeleteSupplier()'>
+        Excluir
+    </button>
+
+    <button mat-raised-button (click)='cancelar()'>
+        Cancelar
+    </button>
+</mat-card>

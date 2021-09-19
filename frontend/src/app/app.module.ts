@@ -18,12 +18,16 @@ import { SupplierFormComponent } from './components/supplier/supplier-form/suppl
 import { SupplierDeleteComponent } from './components/supplier/supplier-delete/supplier-delete.component';
 
 import {FormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatCardModule} from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table'
 import {HttpClientModule} from '@angular/common/http';
 
-
+import {MatButtonModule} from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,7 +53,12 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

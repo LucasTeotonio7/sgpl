@@ -18,7 +18,6 @@ export class SupplierListComponent implements OnInit {
   ngOnInit(): void {
     this.SharedService.getSupplierList().subscribe(data => {
       this.supplier = data;
-      console.log(data);
     })
   }
 

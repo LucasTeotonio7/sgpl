@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HeaderService } from 'src/app/components/template/header/header.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { HeaderService } from 'src/app/components/template/header/header.service
 })
 export class SupplierComponent implements OnInit {
 
-  constructor(private headerService: HeaderService) {
+  constructor(private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
       title: 'Fornecedores',
       icon: 'local_shipping',
@@ -17,6 +18,10 @@ export class SupplierComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  navegarNovoRegistro(): void{
+    this.router.navigate(['fornecedores/novo-fornecedor']);
   }
 
 }
