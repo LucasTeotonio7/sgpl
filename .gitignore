@@ -1,6 +1,7 @@
 desktop.ini
 i-con.ico
 .vscode/settings.json
+.vscode/launch.json
 backend/backend/settings.py
 backend/.env
 __pycache__

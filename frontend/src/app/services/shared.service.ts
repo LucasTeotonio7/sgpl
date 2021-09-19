@@ -39,7 +39,7 @@ export class SharedService {
   }
 
   deleteSupplier(supplier: Supplier) {
-    return this.http.delete(`${this.apiUrl}/supplier/${supplier}`);
+    return this.http.delete(this.apiUrl + '/supplier/' + supplier.id);
   }
 
 }
