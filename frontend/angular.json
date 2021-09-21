@@ -12,7 +12,7 @@
         "@schematics/angular:component": {
           "inlineTemplate": false,
           "inlineStyle": false
-        } 
+        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -71,6 +71,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "frontend:build"
+
           },
           "configurations": {
             "production": {
