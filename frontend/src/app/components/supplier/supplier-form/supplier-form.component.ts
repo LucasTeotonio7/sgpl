@@ -15,7 +15,7 @@ export class SupplierFormComponent implements OnInit {
   supplier: Supplier = {
     name:'',
     cpf: '',
-    dateOfJoining: ''
+    date_joining: ''
   }
 
   constructor(private router: Router,

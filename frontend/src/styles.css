@@ -10,10 +10,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-size: 1.5em;
 }
 
+.mat-create {
+    background-color: #1e88e5;
+    color: #fff;
+}
+
 .edit > i{
     background-color: #20c573;
 }
 
 .delete > i{
-    background-color: #e35e6b;
+    background-color: #fc4b6c;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

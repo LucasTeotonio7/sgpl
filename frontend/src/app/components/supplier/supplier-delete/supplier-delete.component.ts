@@ -14,7 +14,7 @@ export class SupplierDeleteComponent implements OnInit {
     id: null,
     name:'',
     cpf: '',
-    dateOfJoining: ''
+    date_joining: ''
   }
 
   constructor(private router: Router,
