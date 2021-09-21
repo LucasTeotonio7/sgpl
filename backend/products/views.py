@@ -14,7 +14,7 @@ from django.core.files.storage import default_storage
 
 
 @csrf_exempt
-def ProductApi(request, id=0):
+def productApi(request, id=0):
     if request.method == 'GET':
         if(id != 0):
             product = Product.objects.get(id=id)
