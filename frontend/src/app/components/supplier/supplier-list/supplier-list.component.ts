@@ -11,7 +11,7 @@ export class SupplierListComponent implements OnInit {
 
   supplier: Supplier[] = [];
 
-  displayedColumns = ['id', 'name','cpf', 'dateOfJoining','action'];
+  displayedColumns = ['id', 'name','cpf', 'date_joining','action'];
 
   constructor(private SharedService: SharedService) { }
 

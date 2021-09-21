@@ -17,7 +17,7 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Data de Adesão"
-            [(ngModel)]="supplier.dateOfJoining" name="data" type="date">
+            [(ngModel)]="supplier.date_joining" name="data" type="date">
         </mat-form-field>
     </form>
     <button *ngIf="supplier.id == null" mat-raised-button color='primary' (click)='createSupplier()'>
