@@ -28,6 +28,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ProductComponent } from './views/product/product.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
+import { ProductFormComponent } from './components/product/product-form/product-form.component';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SupplierListComponent,
     SupplierFormComponent,
     SupplierDeleteComponent,
+    ProductComponent,
+    ProductListComponent,
+    ProductFormComponent,
+    ProductDeleteComponent,
   ],
   imports: [
     BrowserModule,
