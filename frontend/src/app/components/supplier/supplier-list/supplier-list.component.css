@@ -3,7 +3,7 @@
 
 table{
     width: 100%;
-    padding: 5%;
+    padding: 2% 5% 0% 5%;
     font-family: "Poppins";
 }
 
@@ -14,6 +14,7 @@ th{
 
 mat-paginator{
     padding: 5%;
+    float: left;
 }
 
 .edit{
