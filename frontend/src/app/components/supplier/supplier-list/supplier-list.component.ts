@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SupplierService } from 'src/app/services/supplier.service';
+import { SupplierService } from 'src/app/components/supplier/services/supplier.service';
 import { Supplier } from './supplier.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';

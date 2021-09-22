@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from'@angular/material/snack-bar';
-import { Supplier } from '../components/supplier/supplier-list/supplier.model';
+import { Supplier } from '../supplier-list/supplier.model';
 
 
 @Injectable({

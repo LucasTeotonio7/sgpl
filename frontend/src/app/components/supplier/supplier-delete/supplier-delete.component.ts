@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from '../supplier-list/supplier.model';
-import { SupplierService } from 'src/app/services/supplier.service';
+import { SupplierService } from 'src/app/components/supplier/services/supplier.service';
 
 @Component({
   selector: 'sgpl-supplier-delete',
