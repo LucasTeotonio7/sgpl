@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from '../supplier-list/supplier.model';
-import { SharedService } from 'src/app/services/shared.service';
+import { SupplierService } from 'src/app/components/supplier/services/supplier.service';
 
 @Component({
   selector: 'sgpl-supplier-delete',
@@ -18,12 +18,12 @@ export class SupplierDeleteComponent implements OnInit {
   }
 
   constructor(private router: Router,
-              private SharedService: SharedService,
+              private SupplierService: SupplierService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.SharedService.getSupplier(id).subscribe(data => {
+    this.SupplierService.getSupplier(id).subscribe(data => {
         this.supplier = data;
       });
   }
@@ -33,8 +33,8 @@ export class SupplierDeleteComponent implements OnInit {
   }
 
   DeleteSupplier(): void {
-    this.SharedService.deleteSupplier(this.supplier).subscribe(() => {
-      this.SharedService.showMessage('Excluido Fornecedor!');
+    this.SupplierService.deleteSupplier(this.supplier).subscribe(() => {
+      this.SupplierService.showMessage('Excluido Fornecedor!');
       this.router.navigate(['/fornecedores']);
     });
   }

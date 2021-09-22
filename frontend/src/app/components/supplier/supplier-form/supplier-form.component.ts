@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from '../supplier-list/supplier.model';
-import { SharedService } from 'src/app/services/shared.service';
+import { SupplierService } from 'src/app/components/supplier/services/supplier.service';
 
 @Component({
   selector: 'sgpl-supplier-form',
@@ -19,13 +19,13 @@ export class SupplierFormComponent implements OnInit {
   }
 
   constructor(private router: Router,
-              private SharedService: SharedService,
+              private SupplierService: SupplierService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if(id != null){
-      this.SharedService.getSupplier(id).subscribe(data => {
+      this.SupplierService.getSupplier(id).subscribe(data => {
         this.supplier = data;
         console.log(data)
 
@@ -42,15 +42,15 @@ export class SupplierFormComponent implements OnInit {
 
   createSupplier(): void {
     // this.coverterData();
-    this.SharedService.addSupplier(this.supplier).subscribe(() => {
-      this.SharedService.showMessage('Novo Registro Adicionado!');
+    this.SupplierService.addSupplier(this.supplier).subscribe(() => {
+      this.SupplierService.showMessage('Novo Registro Adicionado!');
       this.router.navigate(['/fornecedores']);
     });
   }
 
   updateSupplier(){
-    this.SharedService.updateSupplier(this.supplier).subscribe(() => {
-      this.SharedService.showMessage('Registro Atualizado!');
+    this.SupplierService.updateSupplier(this.supplier).subscribe(() => {
+      this.SupplierService.showMessage('Registro Atualizado!');
       this.router.navigate(['/fornecedores']);
     });
   }
