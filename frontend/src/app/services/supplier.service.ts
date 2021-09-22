@@ -8,7 +8,7 @@ import { Supplier } from '../components/supplier/supplier-list/supplier.model';
 @Injectable({
   providedIn: 'root'
 })
-export class SharedService {
+export class SupplierService {
   readonly apiUrl = "http://127.0.0.1:8000";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
