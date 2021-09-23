@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
 
   product: Product[] = [];
 
-  displayedColumns = ['id', 'name','unit_measurement','purchase_price','action'];
+  displayedColumns = ['id', 'name','unit_measurement','purchase_price','registration_date','action'];
 
   constructor(private ProductService: ProductService) { }
 
