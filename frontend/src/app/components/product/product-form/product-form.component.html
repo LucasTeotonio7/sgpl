@@ -7,26 +7,17 @@
             <input matInput placeholder="Nome do Produto"
             [(ngModel)]="product.name" name="nomeProduto">
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Unidade"
-            [(ngModel)]="product.unit_measurement" name="unidade">
-        </mat-form-field>
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Unidade</mat-label>
-            <mat-select [disabled]="disableSelect.value">
-              <mat-option value="option1">Option 1</mat-option>
-              <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
-              <mat-option value="option3">Option 3</mat-option>
+        <mat-form-field appearance="fill">
+            <mat-label>Unidade de Medida</mat-label>
+            <mat-select matInput [(ngModel)]="product.unit_measurement" name="Unidade" placeholder="Select A Holiday">
+              <mat-option *ngFor="let choice of choices"
+              value="{{choice.key}}" >{{choice.name}}</mat-option>
             </mat-select>
-          </mat-form-field> -->
+        </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Preço de Compra"
             [(ngModel)]="product.purchase_price" name="precoCompra" type="number">
         </mat-form-field>
-        <!-- <mat-form-field>
-            <input matInput placeholder="Data cadastro"
-            [(ngModel)]="product.registration_date" name="data" type="date">
-        </mat-form-field> -->
     </form>
     <button *ngIf="product.id == null" mat-raised-button color='primary' (click)='createProduct()'>
         Salvar
