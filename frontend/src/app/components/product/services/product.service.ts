@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
 import { MatSnackBar } from'@angular/material/snack-bar';
 import { Product } from '../product-list/product.model';
 import { Choices } from '../../choices.model';
+import { map, catchError } from "rxjs/operators";
 
 
 @Injectable({
@@ -36,7 +37,10 @@ export class ProductService {
   }
 
   addProduct(product: Product) {
-    return this.http.post(this.apiUrl + '/product/', product);
+    return this.http.post(this.apiUrl + '/product/', product).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
   }
 
   updateProduct(product: Product) {
@@ -45,6 +49,11 @@ export class ProductService {
 
   deleteProduct(product: Product) {
     return this.http.delete(this.apiUrl + '/product/' + product.id);
+  }
+
+  errorHandler(e: any): Observable<any> {
+    this.showMessage("Ocorreu um erro!", true);
+    return EMPTY;
   }
 
 }
