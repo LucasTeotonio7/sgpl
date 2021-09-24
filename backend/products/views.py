@@ -10,6 +10,7 @@ from products.models import Product
 from products.serializers import ProductSerializer
 
 from django.core.files.storage import default_storage
+import json
 # Create your views here.
 
 
@@ -46,3 +47,13 @@ def productApi(request, id=0):
         product = Product.objects.get(id=id)
         product.delete()
         return JsonResponse('Deleted Sucessfully!', safe=False)
+
+@csrf_exempt
+def productChoices(request):
+    if request.method == 'GET':
+        choices = Product.MEASURE_CHOICES
+        choices_json = []
+        # o = None
+        for t in choices:
+            choices_json.append({"key": t[0], "name": t[1]})
+        return JsonResponse(choices_json, safe=False)

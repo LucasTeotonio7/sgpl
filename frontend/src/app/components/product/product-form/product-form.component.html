@@ -1,1 +1,32 @@
-<p>product-form works!</p>
+<mat-card>
+    <mat-card-title>
+        {{title}}
+    </mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome do Produto"
+            [(ngModel)]="product.name" name="nomeProduto">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Unidade de Medida</mat-label>
+            <mat-select matInput [(ngModel)]="product.unit_measurement" name="Unidade" placeholder="Select A Holiday">
+              <mat-option *ngFor="let choice of choices"
+              value="{{choice.key}}" >{{choice.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Preço de Compra"
+            [(ngModel)]="product.purchase_price" name="precoCompra" type="number">
+        </mat-form-field>
+    </form>
+    <button *ngIf="product.id == null" mat-raised-button color='primary' (click)='createProduct()'>
+        Salvar
+    </button>
+    <button *ngIf="product.id != null" mat-raised-button color='primary' (click)='updateProduct()'>
+        Atualizar
+    </button>
+
+    <button mat-raised-button (click)='cancelar()'>
+        Cancelar
+    </button>
+</mat-card>

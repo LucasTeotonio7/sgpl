@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from'@angular/material/snack-bar';
 import { Product } from '../product-list/product.model';
+import { Choices } from '../../choices.model';
 
 
 @Injectable({
@@ -28,6 +29,10 @@ export class ProductService {
 
   getProduct(id: string): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/product/${id}`);
+  }
+
+  getProductChoicesList(): Observable<Choices[]> {
+    return this.http.get<Choices[]>(this.apiUrl + '/product/choices/');
   }
 
   addProduct(product: Product) {

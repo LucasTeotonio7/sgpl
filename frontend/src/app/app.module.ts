@@ -32,6 +32,7 @@ import { ProductComponent } from './views/product/product.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { ProductFormComponent } from './components/product/product-form/product-form.component';
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ProductDeleteComponent } from './components/product/product-delete/prod
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

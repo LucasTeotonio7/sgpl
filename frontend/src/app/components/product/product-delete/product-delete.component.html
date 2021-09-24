@@ -1,1 +1,26 @@
-<p>product-delete works!</p>
+<mat-card>
+    <mat-card-title>
+        Excluir Produto
+    </mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome do Produto"
+            [(ngModel)]="product.name" name="nomeProduto" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Unidade"
+            [(ngModel)]="product.unit_measurement" name="unidade" disabled>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Preço de Compra"
+            [(ngModel)]="product.purchase_price" name="precoCompra" type="number" disabled>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button color='primary' (click)='DeleteProduct()'>
+        Excluir
+    </button>
+
+    <button mat-raised-button (click)='cancelar()'>
+        Cancelar
+    </button>
+</mat-card>
