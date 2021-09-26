@@ -6,7 +6,11 @@ import { SupplierService } from 'src/app/components/supplier/services/supplier.s
 @Component({
   selector: 'sgpl-supplier-form',
   templateUrl: './supplier-form.component.html',
-  styleUrls: ['./supplier-form.component.css']
+  styleUrls: ['./supplier-form.component.css'],
+  providers: [
+    // {provide: DateAdapter, useClass: AppDateAdapter},
+    // {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+  ]
 })
 export class SupplierFormComponent implements OnInit {
 
@@ -27,7 +31,7 @@ export class SupplierFormComponent implements OnInit {
     if(id != null){
       this.SupplierService.getSupplier(id).subscribe(data => {
         this.supplier = data;
-        console.log(data)
+        console.log(data.date_joining)
 
       });
       console.log('SUPPLIER: ' + this.supplier.name)
@@ -38,6 +42,8 @@ export class SupplierFormComponent implements OnInit {
 
   cancelar(): void {
     this.router.navigate(['/fornecedores']);
+    // this.supplier.date_joining = FormactDate(this.supplier.date_joining)
+    // console.log(this.supplier.date_joining)
   }
 
   createSupplier(): void {

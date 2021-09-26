@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +34,15 @@ import { ProductFormComponent } from './components/product/product-form/product-
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 import {MatSelectModule} from '@angular/material/select';
 import { WeeklyControlListComponent } from './components/weekly-control/weekly-control-list/weekly-control-list.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+
+
+// //providers LOCALE_ID
+// import localePT from '@angular/common/locales/pt';
+// import localeExtraPT from '@angular/common/locales/extra/pt';
+// import { registerLocaleData } from '@angular/common';
+// registerLocaleData(localePT, 'pt-BR', localeExtraPT);
 
 @NgModule({
   declarations: [
@@ -70,9 +79,13 @@ import { WeeklyControlListComponent } from './components/weekly-control/weekly-c
     MatButtonModule,
     MatInputModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    // {provide: LOCALE_ID, useValue: 'pt-BR' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
