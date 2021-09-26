@@ -3,10 +3,6 @@
         {{title}}
     </mat-card-title>
     <form>
-        <!-- <mat-form-field>
-            <input matInput placeholder="id do Fornecedor"
-            [(ngModel)]="supplier.id" name="idFornecedor">
-        </mat-form-field> -->
         <mat-form-field>
             <input matInput placeholder="Nome do Fornecedor"
             [(ngModel)]="supplier.name" name="nomeFornecedor">
@@ -14,11 +10,19 @@
         <mat-form-field>
             <input matInput placeholder="Cpf"
             [(ngModel)]="supplier.cpf" name="cpf">
-        </mat-form-field>
+        </mat-form-field >
         <mat-form-field>
             <input matInput placeholder="Data de Adesão"
             [(ngModel)]="supplier.date_joining" name="data" type="date">
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Informe a data Adesão</mat-label>
+            <input matInput [(ngModel)]="supplier.date_joining" name="data" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
     </form>
     <button *ngIf="supplier.id == null" mat-raised-button color='primary' (click)='createSupplier()'>
         Salvar

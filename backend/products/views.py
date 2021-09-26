@@ -1,3 +1,4 @@
+from copy import Error
 from django.shortcuts import render
 
 # Create your views here.
@@ -31,8 +32,8 @@ def productApi(request, id=0):
         product_serializer = ProductSerializer(data=products_data)
         if product_serializer.is_valid():
             product_serializer.save()
-            return JsonResponse("added Sucessfully!", safe=False)
-        return JsonResponse("Failed to Add", safe=False)
+            return JsonResponse("Produto adicionado com sucesso!", safe=False)
+        return JsonResponse("Falha ao adicionar esse produto", safe=True)
 
     elif request.method == 'PUT':
         products_data = JSONParser().parse(request)
@@ -40,13 +41,13 @@ def productApi(request, id=0):
         product_serializer = ProductSerializer(product,data=products_data)
         if product_serializer.is_valid():
             product_serializer.save()
-            return JsonResponse("update sucessfully!", safe=False)
-        return JsonResponse('Failed to Update', safe=False)
+            return JsonResponse('Produto atualizado com sucesso!', safe=False)
+        return JsonResponse('Falha ao atualizar esse produto', safe=True)
 
     elif request.method == 'DELETE':
         product = Product.objects.get(id=id)
         product.delete()
-        return JsonResponse('Deleted Sucessfully!', safe=False)
+        return JsonResponse('Produto Excluído!', safe=False)
 
 @csrf_exempt
 def productChoices(request):

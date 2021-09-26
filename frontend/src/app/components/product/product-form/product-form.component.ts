@@ -50,16 +50,15 @@ export class ProductFormComponent implements OnInit {
   }
 
   createProduct(): void {
-    // this.coverterData();
-    this.ProductService.addProduct(this.product).subscribe(() => {
-      this.ProductService.showMessage('Novo Registro Adicionado!');
+    this.ProductService.addProduct(this.product).subscribe(res=>{
+      this.ProductService.showMessage(res.toString());
       this.router.navigate(['/produtos']);
     });
   }
 
-  updateProduct(){
-    this.ProductService.updateProduct(this.product).subscribe(() => {
-      this.ProductService.showMessage('Registro Atualizado!');
+  updateProduct(): void {
+    this.ProductService.updateProduct(this.product).subscribe(res=>{
+      this.ProductService.showMessage(res.toString());
       this.router.navigate(['/produtos']);
     });
   }
