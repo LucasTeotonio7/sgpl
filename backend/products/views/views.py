@@ -50,7 +50,7 @@ def productApi(request, id=0):
         return JsonResponse('Produto Excluído!', safe=False)
 
 @csrf_exempt
-def productChoices(request):
+def product_choices(request):
     if request.method == 'GET':
         choices = Product.MEASURE_CHOICES
         choices_json = []
