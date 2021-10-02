@@ -11,7 +11,6 @@ import { HomeComponent } from './views/home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { ControleSemanalComponent } from './views/controle-semanal/controle-semanal.component';
 import { SupplierComponent } from './views/supplier/supplier.component';
 import { SupplierListComponent } from './components/supplier/supplier-list/supplier-list.component';
 import { SupplierFormComponent } from './components/supplier/supplier-form/supplier-form.component';
@@ -36,6 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { WeeklyControlListComponent } from './components/weekly-control/weekly-control-list/weekly-control-list.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import { WeeklyControlFormComponent } from './components/weekly-control/weekly-control-form/weekly-control-form.component';
+import { WeeklyControlComponent } from './views/weekly-control/weekly-control.component';
 
 
 // //providers LOCALE_ID
@@ -51,7 +52,6 @@ import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
     FooterComponent,
     NavigationComponent,
     HomeComponent,
-    ControleSemanalComponent,
     SupplierComponent,
     SupplierListComponent,
     SupplierFormComponent,
@@ -61,6 +61,8 @@ import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
     ProductFormComponent,
     ProductDeleteComponent,
     WeeklyControlListComponent,
+    WeeklyControlFormComponent,
+    WeeklyControlComponent,
   ],
   imports: [
     BrowserModule,

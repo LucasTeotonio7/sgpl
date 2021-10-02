@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/components/template/header/header.service';
 
 @Component({
-  selector: 'sgpl-controle-semanal',
-  templateUrl: './controle-semanal.component.html',
-  styleUrls: ['./controle-semanal.component.css']
+  selector: 'sgpl-weekly-control',
+  templateUrl: './weekly-control.component.html',
+  styleUrls: ['./weekly-control.component.css']
 })
-export class ControleSemanalComponent implements OnInit {
+export class WeeklyControlComponent implements OnInit {
 
-  constructor(private headerService: HeaderService) { 
+  constructor(private headerService: HeaderService) {
     headerService.headerData = {
       title: 'Controle Semanal',
       icon: 'event_available',
