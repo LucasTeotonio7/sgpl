@@ -1,4 +1,4 @@
-from django.db.models.fields import NullBooleanField
+from django.utils.translation import deactivate_all
 from suppliers.models import Supplier
 from django.db import models
 
@@ -20,14 +20,19 @@ class Product(models.Model):
     purchase_price = models.FloatField(max_length=6,null=False, blank=False)
 
 
+class Week(models.Model):
+    id = models.AutoField(primary_key=True)
+    date_start = models.DateField(null=True)
+    date_end = models.DateField(null=True)
+
+
 class Purchase(models.Model):
     id = models.AutoField(primary_key=True)
     purchase_closing_date = models.DateField(null=True)
     closed = models.BooleanField(default=False)
-    date_start = models.DateField(null=True)
-    date_end = models.DateField(null=True)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     supplier = models.ForeignKey(Supplier, on_delete=models.PROTECT)
+    week = models.ForeignKey(Week, on_delete=models.PROTECT, null=True)
 
 
 class IndividualPurchasePrice(models.Model):

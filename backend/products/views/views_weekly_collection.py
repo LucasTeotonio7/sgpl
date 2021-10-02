@@ -40,8 +40,11 @@ def weekly_collection(request, date_start, date_end):
     date_start = str_to_date(date_start)
     date_end = str_to_date(date_end)
     if request.method == 'GET':
+        #TODO: FILTER -> quando achar ref
+        week = models.Week.objects.get(
+            date_start=date_start, date_end=date_end)
         purchases = models.Purchase.objects.filter(
-                date_start=date_start, date_end=date_end)
+                week=week)
         weekly_collection_json = []
         #TODO: refatorar p/ pegar id
         product = Product.objects.get(id=1)
