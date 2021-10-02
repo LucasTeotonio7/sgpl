@@ -4,10 +4,11 @@ import { ProductDeleteComponent } from './components/product/product-delete/prod
 import { ProductFormComponent } from './components/product/product-form/product-form.component';
 import { SupplierDeleteComponent } from './components/supplier/supplier-delete/supplier-delete.component';
 import { SupplierFormComponent } from './components/supplier/supplier-form/supplier-form.component';
-import { ControleSemanalComponent } from './views/controle-semanal/controle-semanal.component';
 import { HomeComponent } from './views/home/home.component';
 import { ProductComponent } from './views/product/product.component';
 import { SupplierComponent } from './views/supplier/supplier.component';
+import { WeeklyControlFormComponent } from './components/weekly-control/weekly-control-form/weekly-control-form.component';
+import { WeeklyControlComponent } from './views/weekly-control/weekly-control.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   },
   {
     path: "controle-semanal",
-    component: ControleSemanalComponent
+    component: WeeklyControlComponent
+  },
+  {
+    path: "controle-semanal/editar/:id",
+    component: WeeklyControlFormComponent
   },
   {
     path: "fornecedores",
