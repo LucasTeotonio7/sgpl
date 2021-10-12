@@ -1,2 +1,2 @@
-INSERT INTO products_purchase
-VALUES (2,1,2,FALSE, '2021-10-03','2021-09-27',null);
+INSERT INTO weeklyControl_week
+VALUES (1,'2021-09-27', '2021-10-03',1);
