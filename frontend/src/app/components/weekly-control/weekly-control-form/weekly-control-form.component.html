@@ -1,1 +1,61 @@
-<p>weekly-control-form works!</p>
+<section class="week-date">
+  <mat-form-field appearance="fill" class="date-start">
+    <mat-label>INÍCIO DA SEMANA</mat-label>
+    <input matInput [(ngModel)]="weekView.date_start" name="data" [matDatepicker]="picker1" disabled>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="date-end">
+    <mat-label>ENCERRAMENTO DA SEMANA</mat-label>
+    <input matInput [(ngModel)]="weekView.date_end" name="data" [matDatepicker]="picker2" disabled>
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+</section>
+
+<table>
+  <tr>
+      <td>{{displayedColumns[0]}}</td>
+      <td>{{displayedColumns[1]}}</td>
+      <td>{{displayedColumns[2]}}</td>
+      <td>{{displayedColumns[3]}}</td>
+      <td>{{displayedColumns[4]}}</td>
+      <td>{{displayedColumns[5]}}</td>
+      <td>{{displayedColumns[6]}}</td>
+  </tr>
+  <tr>
+    <td>
+      <input matInput [(ngModel)]="dataSource[0].quantity" placeholder="-" type="number" name="day1">
+    </td>
+    <td>
+      <input matInput [(ngModel)]="dataSource[1].quantity" placeholder="-" type="number" name="day1">
+    </td>
+    <td>
+      <input matInput [(ngModel)]="dataSource[2].quantity" placeholder="-" type="number" name="day1">
+    </td>
+    <td>
+      <input matInput [(ngModel)]="dataSource[3].quantity" placeholder="-" type="number" name="day1">
+    </td>
+    <td>
+      <input matInput [(ngModel)]="dataSource[4].quantity" placeholder="-" type="number" name="day1">
+    </td>
+    <td>
+      <input matInput [(ngModel)]="dataSource[5].quantity" placeholder="-" type="number" name="day1">
+    </td>
+    <td>
+      <input matInput [(ngModel)]="dataSource[6].quantity" placeholder="-" type="number" name="day1">
+    </td>
+  </tr>
+</table>
+
+
+<div class="buttons">
+  <button mat-raised-button (click)='cancelar()'>
+    Cancelar
+  </button>
+
+  <button mat-raised-button color='primary' (click)='salvar()'>
+    Salvar
+  </button>
+</div>
