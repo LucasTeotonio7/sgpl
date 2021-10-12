@@ -1,3 +1,92 @@
-p{
-    margin-top: 100px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+
+.week-date{
+    width: 80%;
+    margin: 10% 10% 2% 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+input[type=number] {
+   -moz-appearance: textfield;
+   appearance: textfield;
+   padding: 20px 0px;
+   transition: 0.4s;
+   /* border-top: 1px solid #e4e4e4; */
+}
+
+input[type=number]:focus {
+    font-size: 1.15em;
+ }
+
+
+
+
+
+.date-start{
+    margin-right: 10%;
+}
+
+.date-start mat-label{
+    font-weight: 500;
+    color: #43aa8b;
+}
+
+.date-end mat-label{
+    font-weight: 500;
+    color: #f28482;
+}
+
+table{
+    width: 80%;
+    margin: 0% 10%;
+    font-family: "Poppins";
+}
+
+.date-description{
+    font-size: 0.7em;
+}
+
+th,td{
+    padding: 0px !important;
+    /* border: 1px solid #e2e1e1; */
+    text-align: center !important;
+    max-width: 20px;
+}
+
+
+.edit{
+    margin-right: 10px;
+}
+
+.buttons{
+    position: fixed;
+    right: 0;
+    margin-right: 10%;
+    margin-top: 20px;
+}
+
+.buttons button{
+    margin-top: 20px;
+    margin-right: 15px;
+
+}
+
+
+@media (max-width:700px){
+
+    th,td{
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    td i{
+        font-size: 14px;
+    }
 }

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
 
     #my_apps
     'suppliers.apps.SuppliersConfig',
-    'products.apps.ProductsConfig'
+    'products.apps.ProductsConfig',
+    'weeklycontrol.apps.WeeklycontrolConfig'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True

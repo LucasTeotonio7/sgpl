@@ -12,10 +12,4 @@ class ProductSerializer(serializers.ModelSerializer):
 class PurchaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Purchase
-        fields = ('id','purchase_closing_date','closed','date_start','date_end','product_id','supplier_id')
-
-
-class WeeklyCollectionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.WeeklyCollection
-        fields = ('id','date','quantity','purchase')
+        fields = ('id','purchase_closing_date','closed','product_id','supplier_id','week_id')

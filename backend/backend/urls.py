@@ -21,5 +21,6 @@ from django.conf.urls import url, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('suppliers.urls')),
-    url(r'^', include('products.urls'))
+    url(r'^', include('products.urls')),
+    url(r'^', include('weeklycontrol.urls'))
 ]
