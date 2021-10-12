@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product-list/product.model';
 import { ProductService } from 'src/app/components/product/services/product.service';
-import { dataAtual } from '../../utils';
+import { currentDate } from '../../utils';
 import { Choices } from '../../choices.model';
 
 @Component({
@@ -17,7 +17,7 @@ export class ProductFormComponent implements OnInit {
   product: Product = {
     name:'',
     unit_measurement: '',
-    registration_date: dataAtual(),
+    registration_date: currentDate(),
     purchase_price: null
   }
 
@@ -31,8 +31,6 @@ export class ProductFormComponent implements OnInit {
   ngOnInit(): void {
     this.ProductService.getProductChoicesList().subscribe(data => {
       this.choices = data;
-      console.log('choices: '+this.choices[0].key)
-      console.log('data source: '+data)
     })
     const id = this.route.snapshot.paramMap.get('id');
     if(id != null){
@@ -42,7 +40,6 @@ export class ProductFormComponent implements OnInit {
       });
       this.title = 'Atualizar Produto'
     }
-    console.log('data: '+ dataAtual())
   }
 
   cancelar(): void {
