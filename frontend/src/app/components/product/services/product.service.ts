@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, EMPTY } from 'rxjs';
 import { MatSnackBar } from'@angular/material/snack-bar';
-import { Product } from '../product-list/product.model';
+import { Product } from '../models/product.model';
 import { Choices } from '../../choices.model';
 import { map, catchError } from "rxjs/operators";
 
