@@ -30,7 +30,7 @@ export class WeeklyControlService {
     return this.http.put(this.apiUrl + '/weekly-collection-form/', WeeklyCollection);
   }
 
-  getWeek(id_purchase: string): Observable<Week> {
+  getWeek(id_purchase: number): Observable<Week> {
     return this.http.get<Week>(this.apiUrl + `/week/${id_purchase}`);
   }
 

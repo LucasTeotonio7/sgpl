@@ -14,8 +14,14 @@
   </mat-form-field>
 </section>
 
-<table>
-  <tr>
+<section class="supplier-header">
+  <mat-card>
+    <label>FORNECEDOR: {{supplier.name}}</label>
+  </mat-card>
+</section>
+
+<table class="mat-elevation-z3">
+  <tr class="mat-elevation-z1">
       <td>{{displayedColumns[0]}}</td>
       <td>{{displayedColumns[1]}}</td>
       <td>{{displayedColumns[2]}}</td>
@@ -29,22 +35,22 @@
       <input matInput [(ngModel)]="dataSource[0].quantity" placeholder="-" type="number" name="day1">
     </td>
     <td>
-      <input matInput [(ngModel)]="dataSource[1].quantity" placeholder="-" type="number" name="day1">
+      <input matInput [(ngModel)]="dataSource[1].quantity" placeholder="-" type="number" name="day2">
     </td>
     <td>
-      <input matInput [(ngModel)]="dataSource[2].quantity" placeholder="-" type="number" name="day1">
+      <input matInput [(ngModel)]="dataSource[2].quantity" placeholder="-" type="number" name="day3">
     </td>
     <td>
-      <input matInput [(ngModel)]="dataSource[3].quantity" placeholder="-" type="number" name="day1">
+      <input matInput [(ngModel)]="dataSource[3].quantity" placeholder="-" type="number" name="day4">
     </td>
     <td>
-      <input matInput [(ngModel)]="dataSource[4].quantity" placeholder="-" type="number" name="day1">
+      <input matInput [(ngModel)]="dataSource[4].quantity" placeholder="-" type="number" name="day5">
     </td>
     <td>
-      <input matInput [(ngModel)]="dataSource[5].quantity" placeholder="-" type="number" name="day1">
+      <input matInput [(ngModel)]="dataSource[5].quantity" placeholder="-" type="number" name="day6">
     </td>
     <td>
-      <input matInput [(ngModel)]="dataSource[6].quantity" placeholder="-" type="number" name="day1">
+      <input matInput [(ngModel)]="dataSource[6].quantity" placeholder="-" type="number" name="day7">
     </td>
   </tr>
 </table>

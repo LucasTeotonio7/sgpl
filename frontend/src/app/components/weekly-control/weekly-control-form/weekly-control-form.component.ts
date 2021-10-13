@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Supplier } from '../../supplier/supplier-list/supplier.model';
 import { FormactDate, string_to_datetime, stringToWeekday, dateWeekdayName } from '../../utils';
 import { WeeklyControlService } from '../services/weekly-control.service'
 import { Week, WeeklyCollection, weekView } from '../weekly-control-form/week.model';
-
+import { SupplierService } from 'src/app/components/supplier/services/supplier.service';
+import { PurchaseService } from 'src/app/components/product/services/purchase.service';
+import { Purchase } from '../../product/models/purchase.model';
 
 @Component({
   selector: 'sgpl-weekly-control-form',
@@ -27,7 +30,25 @@ export class WeeklyControlFormComponent implements OnInit {
     date_end:null
   }
 
+  supplier: Supplier = {
+    id: 0,
+    name:'',
+    cpf: '',
+    date_joining: ''
+  }
+
+  purchase: Purchase = {
+    id:0,
+    purchase_closing_date:'',
+    closed:false,
+    product_id:0,
+    supplier_id:0,
+    week_id: 0,
+  }
+
   constructor(private WeeklyControlService: WeeklyControlService,
+              private SupplierService: SupplierService,
+              private PurchaseService: PurchaseService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -35,17 +56,26 @@ export class WeeklyControlFormComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if(id != null){
-      this.WeeklyControlService.getWeeklyCollection(id).subscribe(data => {
-        this.WeeklyControlValues = data;
-
-        this.WeeklyControlService.getWeek(id).subscribe(data=>{
+      //get purchase
+      this.PurchaseService.getPurchase(id).subscribe(data => {
+        this.purchase = data;
+        //get suplier
+        this.SupplierService.getSupplier(this.purchase.supplier_id).subscribe(data => {
+          this.supplier = data;
+        })
+        //get week
+        this.WeeklyControlService.getWeek(this.purchase.week_id).subscribe(data=>{
           this.week = data
-          this.FillDataSource(this.week, this.WeeklyControlValues)
-          this.generatedisplayedColumns(this.week.date_start)
           this.weekView.date_start = string_to_datetime(this.week.date_start)
           this.weekView.date_end = string_to_datetime(this.week.date_end)
+          //get weekly collection
+          this.WeeklyControlService.getWeeklyCollection(id).subscribe(data => {
+            this.WeeklyControlValues = data;
+            this.FillDataSource(this.week, this.WeeklyControlValues)
+            this.generatedisplayedColumns(this.week.date_start)
+          });
         })
-      });
+      })
     }
   }
 
