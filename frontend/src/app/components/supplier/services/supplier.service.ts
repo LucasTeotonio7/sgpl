@@ -26,7 +26,7 @@ export class SupplierService {
     return this.http.get<any[]>(this.apiUrl + '/supplier/');
   }
 
-  getSupplier(id: string): Observable<any>{
+  getSupplier(id: number): Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/supplier/${id}`);
   }
 

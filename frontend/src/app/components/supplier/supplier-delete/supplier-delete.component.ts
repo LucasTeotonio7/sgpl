@@ -22,7 +22,7 @@ export class SupplierDeleteComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.SupplierService.getSupplier(id).subscribe(data => {
         this.supplier = data;
       });
