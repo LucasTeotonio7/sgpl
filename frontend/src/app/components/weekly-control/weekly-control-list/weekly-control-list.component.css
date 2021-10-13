@@ -1,9 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
+.new-week{
+    margin-top: 80px;
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+.week-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-left: 5%;
+}
+
+.week-date .date-start, .week-date .date-end{
+    height: 50px;
+}
 
 table{
     width: 100%;
-    padding: 2% 5% 0% 5%;
+    padding: 0% 5% 0% 5%;
     font-family: "Poppins";
 }
 
