@@ -27,7 +27,6 @@ export class WeeklyControlListComponent implements OnInit {
   ngOnInit(): void {
     this.WeeklyControlService.getWeeklyControlList().subscribe(data => {
       this.dataSource = data;
-      console.log(data)
     })
   }
 

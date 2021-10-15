@@ -86,7 +86,6 @@ export class WeeklyControlFormComponent implements OnInit {
   salvar(): void {
     for (var i=0; i < 7; i++) {
       if(this.dataSource[i].id){
-        console.log(this.dataSource[i])
         this.WeeklyControlService.updateWeeklyCollection(this.dataSource[i]).subscribe()
       }else{
         if(this.dataSource[i].quantity!== null){
