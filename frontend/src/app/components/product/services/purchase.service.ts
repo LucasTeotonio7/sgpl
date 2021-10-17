@@ -31,6 +31,10 @@ export class PurchaseService {
     return this.http.get<any>(`${this.apiUrl}/purchase/${id}`);
   }
 
+  getLastPurchase(product: number): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/last-purchase/${product}`);
+  }
+
   addPurchase(purchase: Purchase) {
     return this.http.post(this.apiUrl + '/purchase/', purchase).pipe(
       map((obj) => obj),
