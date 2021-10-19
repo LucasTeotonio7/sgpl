@@ -19,3 +19,10 @@ def get_week(request, purchase_id):
         week= Week.objects.get(id=purchase.week.id)
         wc_serializer = serializers.WeekSerializer(week, many=False)
         return JsonResponse(wc_serializer.data, safe=False)
+
+@csrf_exempt
+def get_last_week(request):
+    if (request.method == 'GET'):
+        week= Week.objects.latest('pk')
+        wc_serializer = serializers.WeekSerializer(week, many=False)
+        return JsonResponse(wc_serializer.data, safe=False)
