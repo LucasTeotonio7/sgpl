@@ -27,18 +27,15 @@ export class WeeklyControlPurchaseComponent implements OnInit {
     this.purchase.week = parseInt(this.route.snapshot.paramMap.get('week'));
     this.purchase.supplier = parseInt(this.route.snapshot.paramMap.get('supplier'));
     this.createPurchase()
-    this.redirect()
   }
 
   createPurchase(): void {
-    this.PurchaseService.addPurchase(this.purchase).subscribe();
-  }
-
-  redirect(): void {
-    this.PurchaseService.getLastPurchase(this.purchase.product).subscribe(data=>{
-      this.purchase = data;
-      this.router.navigate([`controle-semanal/editar/${this.purchase.id}`]);
-    })
+    this.PurchaseService.addPurchase(this.purchase).subscribe(res=>{
+      this.PurchaseService.getLastPurchase(this.purchase.product).subscribe(data=>{
+        this.purchase = data;
+        this.router.navigate([`controle-semanal/editar/${this.purchase.id}`]);
+      })
+    });
   }
 
 
