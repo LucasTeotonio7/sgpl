@@ -27,14 +27,12 @@ export class SupplierFormComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
     if(id != null){
       this.SupplierService.getSupplier(id).subscribe(data => {
         this.supplier = data;
-        console.log(data.date_joining)
 
       });
-      console.log('SUPPLIER: ' + this.supplier.name)
       this.title = 'Atualizar Fornecedor'
     }
 
@@ -42,8 +40,6 @@ export class SupplierFormComponent implements OnInit {
 
   cancelar(): void {
     this.router.navigate(['/fornecedores']);
-    // this.supplier.date_joining = FormactDate(this.supplier.date_joining)
-    // console.log(this.supplier.date_joining)
   }
 
   createSupplier(): void {

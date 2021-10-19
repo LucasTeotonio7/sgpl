@@ -15,6 +15,7 @@ class WeeklyCollectionSerializer(serializers.ModelSerializer):
     def json_empty_list(supplier, product):
         return ({
             "purchase_id": 0,
+            "supplier_id": supplier.id,
             "name_supplier": supplier.name,
             "day1": '0',
             "day2": '0',
@@ -31,6 +32,7 @@ class WeeklyCollectionSerializer(serializers.ModelSerializer):
     def json_fill_list(purchase, supplier, product, array_days):
         return ({
             "purchase_id": purchase.id,
+            "supplier_id": supplier.id,
             "name_supplier": supplier.name,
             "day1": array_days[0],
             "day2": array_days[1],

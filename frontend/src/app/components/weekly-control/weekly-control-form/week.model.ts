@@ -2,6 +2,7 @@ export interface Week{
     id?:number;
     date_start:string;
     date_end:string;
+    product: number;
 }
 
 export interface weekView{

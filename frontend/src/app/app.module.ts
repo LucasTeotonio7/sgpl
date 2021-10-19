@@ -11,6 +11,7 @@ import { HomeComponent } from './views/home/home.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 import { SupplierComponent } from './views/supplier/supplier.component';
 import { SupplierListComponent } from './components/supplier/supplier-list/supplier-list.component';
 import { SupplierFormComponent } from './components/supplier/supplier-form/supplier-form.component';
@@ -83,7 +84,8 @@ import { WeeklyControlComponent } from './views/weekly-control/weekly-control.co
     MatSnackBarModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule
   ],
   providers: [
     // {provide: LOCALE_ID, useValue: 'pt-BR' }

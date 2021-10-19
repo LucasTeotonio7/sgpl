@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, EMPTY } from 'rxjs';
 import { MatSnackBar } from'@angular/material/snack-bar';
-import { Product } from '../models/product.model';
-import { Choices } from '../../choices.model';
+import { Purchase } from '../models/purchase.model';
 import { map, catchError } from "rxjs/operators";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class PurchaseService {
   readonly apiUrl = "http://127.0.0.1:8000";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
@@ -24,31 +23,31 @@ export class ProductService {
     })
   }
 
-  getProductList(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl + '/product/');
+  getPurchaseList(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl + '/purchase/');
   }
 
-  getProduct(id: string): Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/product/${id}`);
+  getPurchase(id: string): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/purchase/${id}`);
   }
 
-  getProductChoicesList(): Observable<Choices[]> {
-    return this.http.get<Choices[]>(this.apiUrl + '/product/choices/');
+  getLastPurchase(product: number): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/last-purchase/${product}`);
   }
 
-  addProduct(product: Product) {
-    return this.http.post(this.apiUrl + '/product/', product).pipe(
+  addPurchase(purchase: Purchase) {
+    return this.http.post(this.apiUrl + '/purchase/', purchase).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
   }
 
-  updateProduct(product: Product) {
-    return this.http.put(this.apiUrl + '/product/', product);
+  updatePurchase(purchase: Purchase) {
+    return this.http.put(this.apiUrl + '/purchase/', purchase);
   }
 
-  deleteProduct(product: Product) {
-    return this.http.delete(this.apiUrl + '/product/' + product.id);
+  deletePurchase(purchase: Purchase) {
+    return this.http.delete(this.apiUrl + '/purchase/' + purchase.id);
   }
 
   errorHandler(e: any): Observable<any> {

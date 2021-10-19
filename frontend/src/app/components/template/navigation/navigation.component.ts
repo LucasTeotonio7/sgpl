@@ -14,7 +14,6 @@ export class NavigationComponent implements OnInit {
     $(".mat-list-item").on('click', function(){
       $(".mat-list-item").removeClass('active');
       $(this).addClass('active');
-      console.log("aqui")
     });
   }
 

@@ -1,3 +1,36 @@
+<button mat-raised-button color='primary' class="new-week">
+  <i class="material-icons">
+    add
+  </i>
+  Nova Semana
+</button>
+
+<mat-card class="week-date">
+  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-form-field appearance="fill" class="date-start">
+    <mat-label>INÍCIO DA SEMANA</mat-label>
+    <input matInput [(ngModel)]="weekView.date_start" name="data" [matDatepicker]="picker1" disabled>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="date-end">
+    <mat-label>ENCERRAMENTO DA SEMANA</mat-label>
+    <input matInput [(ngModel)]="weekView.date_end" name="data" [matDatepicker]="picker2" disabled>
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <label>PRODUTO: NOME</label>
+
+  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+
+</mat-card>
+
 <table mat-table [dataSource]="dataSource">
     <!-- Name Column -->
     <ng-container matColumnDef="name_supplier">
@@ -75,11 +108,16 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>AÇÕES</th>
       <td mat-cell *matCellDef="let row">
-          <a routerLink="editar/{{row.purchase_id}}" title="Editar" class="action-button edit">
+          <a *ngIf="row.purchase_id !== 0" routerLink="editar/{{row.purchase_id}}" title="Editar" class="action-button edit">
               <i class="material-icons">
                   edit
               </i>
           </a>
+          <a *ngIf="row.purchase_id == 0" routerLink="gerar-compra/{{week.product}}/{{week.id}}/{{row.supplier_id}}" title="Editar" class="action-button edit">
+            <i class="material-icons">
+                edit
+            </i>
+        </a>
           <a routerLink="pagar/{{row.purchase_id}}" title="Pagar Fornecedor" class="action-button pay">
               <i class="material-icons">
                 attach_money

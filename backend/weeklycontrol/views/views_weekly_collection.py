@@ -18,9 +18,8 @@ import json
 @csrf_exempt
 def weekly_collection_list(request, id, date_start=None, date_end=None):
     if (request.method == 'GET'):
-        supplier = Supplier.objects.get(id=id)
         week = Week.objects.get(date_start=date_start, date_end=date_end)
-        purchase = Purchase.objects.get(week=week, supplier=supplier)
+        purchase = Purchase.objects.get(id=id, week=week)
         weekly_collection = WeeklyCollection.objects.filter(
             date__gte=date_start, date__lte=date_end, purchase=purchase).order_by('date')
         wc_serializer = serializers.WeeklyCollectionSerializer(weekly_collection, many=True)

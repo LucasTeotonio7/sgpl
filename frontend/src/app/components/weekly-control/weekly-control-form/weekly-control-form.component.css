@@ -9,6 +9,18 @@
     align-items: center;
 }
 
+.supplier-header{
+    width: 80%;
+    margin: 2% 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.supplier-header mat-card{
+    width: 100%;
+}
+
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 
@@ -18,16 +30,12 @@ input[type=number] {
    appearance: textfield;
    padding: 20px 0px;
    transition: 0.4s;
-   /* border-top: 1px solid #e4e4e4; */
+   border-top: 1px solid #e4e4e4;
 }
 
 input[type=number]:focus {
     font-size: 1.15em;
  }
-
-
-
-
 
 .date-start{
     margin-right: 10%;
@@ -55,7 +63,6 @@ table{
 
 th,td{
     padding: 0px !important;
-    /* border: 1px solid #e2e1e1; */
     text-align: center !important;
     max-width: 20px;
 }

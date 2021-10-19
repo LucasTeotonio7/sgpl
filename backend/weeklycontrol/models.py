@@ -11,6 +11,6 @@ class Week(models.Model):
 
 class WeeklyCollection(models.Model):
     id = models.AutoField(primary_key=True)
-    date = models.DateField(null=False, unique=True)
+    date = models.DateField(null=False)
     quantity = models.FloatField(max_length=6,null=True)
     purchase = models.ForeignKey(Purchase, on_delete=models.PROTECT)
