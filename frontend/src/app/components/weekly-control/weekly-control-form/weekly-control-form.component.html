@@ -22,35 +22,11 @@
 
 <table class="mat-elevation-z3">
   <tr class="mat-elevation-z1">
-      <td>{{displayedColumns[0]}}</td>
-      <td>{{displayedColumns[1]}}</td>
-      <td>{{displayedColumns[2]}}</td>
-      <td>{{displayedColumns[3]}}</td>
-      <td>{{displayedColumns[4]}}</td>
-      <td>{{displayedColumns[5]}}</td>
-      <td>{{displayedColumns[6]}}</td>
+      <td *ngFor="let day of displayedColumns">{{day}}</td>
   </tr>
   <tr>
-    <td>
-      <input matInput [(ngModel)]="dataSource[0].quantity" placeholder="-" type="number" name="day1">
-    </td>
-    <td>
-      <input matInput [(ngModel)]="dataSource[1].quantity" placeholder="-" type="number" name="day2">
-    </td>
-    <td>
-      <input matInput [(ngModel)]="dataSource[2].quantity" placeholder="-" type="number" name="day3">
-    </td>
-    <td>
-      <input matInput [(ngModel)]="dataSource[3].quantity" placeholder="-" type="number" name="day4">
-    </td>
-    <td>
-      <input matInput [(ngModel)]="dataSource[4].quantity" placeholder="-" type="number" name="day5">
-    </td>
-    <td>
-      <input matInput [(ngModel)]="dataSource[5].quantity" placeholder="-" type="number" name="day6">
-    </td>
-    <td>
-      <input matInput [(ngModel)]="dataSource[6].quantity" placeholder="-" type="number" name="day7">
+    <td *ngFor="let row of dataSource">
+      <input matInput [(ngModel)]="row.quantity" placeholder="-" type="number" name="day1">
     </td>
   </tr>
 </table>
