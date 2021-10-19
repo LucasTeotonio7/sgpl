@@ -9,6 +9,7 @@ import { ProductComponent } from './views/product/product.component';
 import { SupplierComponent } from './views/supplier/supplier.component';
 import { WeeklyControlFormComponent } from './components/weekly-control/weekly-control-form/weekly-control-form.component';
 import { WeeklyControlComponent } from './views/weekly-control/weekly-control.component';
+import { WeeklyControlPurchaseComponent } from './components/weekly-control/weekly-control-purchase/weekly-control-purchase.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: "produtos/excluir/:id",
     component: ProductDeleteComponent
+  },
+  {
+    path: "controle-semanal/gerar-compra/:product/:week/:supplier",
+    component: WeeklyControlPurchaseComponent
   },
 ];
 
