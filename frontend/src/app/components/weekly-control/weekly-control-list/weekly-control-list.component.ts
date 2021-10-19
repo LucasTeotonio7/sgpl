@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { string_to_datetime } from '../../utils';
 import { WeeklyControlService } from '../services/weekly-control.service'
-import { weekView } from '../weekly-control-form/week.model';
+import { Week, weekView } from '../weekly-control-form/week.model';
 
 @Component({
   selector: 'sgpl-weekly-control-list',
@@ -18,6 +18,11 @@ export class WeeklyControlListComponent implements OnInit {
     date_end:null
   }
 
+  week: Week = {
+    date_start:'',
+    date_end:'',
+    product: null
+  }
 
   displayedColumns = ['name_supplier','mon','tue','wed','thu','fri','sat','sun','qty','product_price','total_price','status','action'];
 
@@ -28,6 +33,12 @@ export class WeeklyControlListComponent implements OnInit {
     this.WeeklyControlService.getWeeklyControlList().subscribe(data => {
       this.dataSource = data;
     })
+    this.WeeklyControlService.getLastWeek().subscribe(data => {
+      this.week = data;
+      this.weekView.date_start = string_to_datetime(data.date_start)
+      this.weekView.date_end = string_to_datetime(data.date_end)
+    })
+
   }
 
 }
