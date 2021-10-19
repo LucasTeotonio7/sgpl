@@ -108,11 +108,16 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>AÇÕES</th>
       <td mat-cell *matCellDef="let row">
-          <a routerLink="editar/{{row.purchase_id}}" title="Editar" class="action-button edit">
+          <a *ngIf="row.purchase_id !== 0" routerLink="editar/{{row.purchase_id}}" title="Editar" class="action-button edit">
               <i class="material-icons">
                   edit
               </i>
           </a>
+          <a *ngIf="row.purchase_id == 0" routerLink="gerar-compra/{{week.product}}/{{week.id}}/{{row.supplier_id}}" title="Editar" class="action-button edit">
+            <i class="material-icons">
+                edit
+            </i>
+        </a>
           <a routerLink="pagar/{{row.purchase_id}}" title="Pagar Fornecedor" class="action-button pay">
               <i class="material-icons">
                 attach_money
