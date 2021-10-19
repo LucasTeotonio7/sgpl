@@ -26,12 +26,14 @@ def purchaseApi(request, id=0):
             purchases = Purchase.objects.all().order_by('pk')
             purchases_serializer = PurchaseSerializer(purchases, many=True)
             return JsonResponse(purchases_serializer.data, safe=False)
-
+    #TODO: improve JsonResponse return message: (35 and 36)
     elif request.method == 'POST':
         purchases_data = JSONParser().parse(request)
         purchase_serializer = PurchaseSerializer(data=purchases_data)
         if purchase_serializer.is_valid():
             purchase_serializer.save()
+            return JsonResponse("Gerada!", safe=False)
+        return JsonResponse("Falha ao gerar", safe=False)
 
     elif request.method == 'PUT':
         purchases_data = JSONParser().parse(request)
@@ -43,3 +45,11 @@ def purchaseApi(request, id=0):
     elif request.method == 'DELETE':
         purchase = Purchase.objects.get(id=id)
         purchase.delete()
+
+
+@csrf_exempt
+def get_last_purchase(request, product):
+    if (request.method == 'GET'):
+        purchase = Purchase.objects.filter(product=product).latest('pk')
+        purchase_serializer = PurchaseSerializer(purchase, many=False)
+        return JsonResponse(purchase_serializer.data, safe=False)
