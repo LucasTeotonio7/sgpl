@@ -32,7 +32,7 @@ export class ProductFormComponent implements OnInit {
     this.ProductService.getProductChoicesList().subscribe(data => {
       this.choices = data;
     })
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
     if(id != null){
       this.ProductService.getProduct(id).subscribe(data => {
         this.product = data;
