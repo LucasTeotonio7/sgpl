@@ -22,7 +22,8 @@ export class WeeklyControlFormComponent implements OnInit {
 
   week: Week = {
     date_start:'',
-    date_end:''
+    date_end:'',
+    product: null
   }
 
   weekView: weekView = {
@@ -41,9 +42,9 @@ export class WeeklyControlFormComponent implements OnInit {
     id:0,
     purchase_closing_date:'',
     closed:false,
-    product_id:0,
-    supplier_id:0,
-    week_id: 0,
+    product:0,
+    supplier:0,
+    week: 0,
   }
 
   constructor(private WeeklyControlService: WeeklyControlService,
@@ -54,17 +55,19 @@ export class WeeklyControlFormComponent implements OnInit {
 
 
   ngOnInit(): void {
+    //TODO: create view backend, many requests!!
     const id = this.route.snapshot.paramMap.get('id');
     if(id != null){
       //get purchase
       this.PurchaseService.getPurchase(id).subscribe(data => {
         this.purchase = data;
         //get suplier
-        this.SupplierService.getSupplier(this.purchase.supplier_id).subscribe(data => {
+        this.SupplierService.getSupplier(this.purchase.supplier).subscribe(data => {
           this.supplier = data;
         })
         //get week
-        this.WeeklyControlService.getWeek(this.purchase.week_id).subscribe(data=>{
+        //TODO: GETWEEK (WEEK.ID) !
+        this.WeeklyControlService.getWeek(this.purchase.id).subscribe(data=>{
           this.week = data
           this.weekView.date_start = string_to_datetime(this.week.date_start)
           this.weekView.date_end = string_to_datetime(this.week.date_end)
@@ -120,7 +123,7 @@ export class WeeklyControlFormComponent implements OnInit {
           var new_collection: WeeklyCollection = {
             date: FormactDate(date_start),
             quantity:null,
-            purchase:1,
+            purchase:this.purchase.id,
           }
           this.dataSource.push(new_collection)
         }
@@ -131,9 +134,10 @@ export class WeeklyControlFormComponent implements OnInit {
         var new_collection: WeeklyCollection = {
           date: FormactDate(date_start),
           quantity:null,
-          purchase:1,
+          purchase:this.purchase.id,
         }
         this.dataSource.push(new_collection)
+        date_start.setDate(date_start.getDate() + 1)
       }
     }
 
