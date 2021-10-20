@@ -142,13 +142,4 @@ export class WeeklyControlFormComponent implements OnInit {
     }
 
   }
-
-  FormactDateMonthDay(data) {
-    data = new Date(data + ' 00:00:00');
-    var day = String(data.getDate()).padStart(2, '0');
-    var month = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"][data.getMonth()];
-    return day + ', ' + month;
-  }
 }
-
-
