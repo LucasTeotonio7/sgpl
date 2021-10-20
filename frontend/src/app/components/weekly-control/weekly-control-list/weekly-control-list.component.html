@@ -1,4 +1,4 @@
-<button mat-raised-button color='primary' class="new-week">
+<button mat-raised-button color='primary' class="new-week" (click)="openDialog()">
   <i class="material-icons">
     add
   </i>
@@ -9,21 +9,21 @@
   <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <mat-form-field appearance="fill" class="date-start">
-    <mat-label>INÍCIO DA SEMANA</mat-label>
-    <input matInput [(ngModel)]="weekView.date_start" name="data" [matDatepicker]="picker1" disabled>
-    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-  </mat-form-field>
 
-  <mat-form-field appearance="fill" class="date-end">
-    <mat-label>ENCERRAMENTO DA SEMANA</mat-label>
-    <input matInput [(ngModel)]="weekView.date_end" name="data" [matDatepicker]="picker2" disabled>
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
+  <div class="date">
+    <i class="material-icons">date_range</i>
+    <p class="start">{{weekView.date_start}}</p>
+  </div>
 
-  <label>PRODUTO: {{product.name|uppercase}}</label>
+  <div class="date">
+    <i class="material-icons">date_range</i>
+    <p class="end">{{weekView.date_end}}</p>
+  </div>
+
+  <label>
+    <i class="material-icons">inventory_2</i>
+    PRODUTO: {{product.name|uppercase}}
+  </label>
 
   <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
     <mat-icon>arrow_forward</mat-icon>
