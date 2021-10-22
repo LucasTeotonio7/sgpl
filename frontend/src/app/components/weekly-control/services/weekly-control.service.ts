@@ -14,8 +14,8 @@ export class WeeklyControlService {
   constructor(private http: HttpClient) { }
 
   //TODO: Refactor by passing the dates
-  getWeeklyControlList(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl + '/weekly-collection/2021-09-27/2021-10-03/');
+  getWeeklyControlList(date_start: string, date_end: string): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl + `/weekly-collection/${date_start}/${date_end}/`);
   }
 
   getWeeklyCollection(id: string): Observable<WeeklyCollection[]> {
@@ -32,7 +32,21 @@ export class WeeklyControlService {
 
   //week service
 
+  getWeek(id: number): Observable<any>{
+    return this.http.get<any>(`${this.apiUrl}/week/${id}`);
+  }
 
+  addWeek(week: Week) {
+    return this.http.post(this.apiUrl + '/week/', week)
+  }
+
+  updateWeek(week: Week) {
+    return this.http.put(this.apiUrl + '/week/', week);
+  }
+
+  deleteWeek(week: Week) {
+    return this.http.delete(this.apiUrl + '/week/' + week.id);
+  }
 
   getWeekPurchase(purchase: number): Observable<Week> {
     return this.http.get<Week>(this.apiUrl + `/week-purchase/${purchase}`);
