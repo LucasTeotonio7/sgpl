@@ -13,12 +13,48 @@ import json
 
 
 @csrf_exempt
-def get_week(request, purchase_id):
+def weektApi(request, id=0):
+    if request.method == 'GET':
+        if(id != 0):
+            week = Week.objects.get(id=id)
+            week_serializer = serializers.WeekSerializer(week)
+            return JsonResponse(week_serializer.data, safe=False)
+        else:
+            weeks = Week.objects.all().order_by('pk')
+            weeks_serializer = serializers.WeekSerializer(weeks, many=True)
+            return JsonResponse(weeks_serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        weeks_data = JSONParser().parse(request)
+        week_serializer = serializers.WeekSerializer(data=weeks_data)
+        if week_serializer.is_valid():
+            week_serializer.save()
+            return JsonResponse("Nova Semana Criada!", safe=False)
+        return JsonResponse("Falha ao adicionar uma nova semana", safe=True)
+
+    elif request.method == 'PUT':
+        weeks_data = JSONParser().parse(request)
+        week = Week.objects.get(id=weeks_data['id'])
+        week_serializer = serializers.WeekSerializer(week,data=weeks_data)
+        if week_serializer.is_valid():
+            week_serializer.save()
+            return JsonResponse('Dados da semana atualizado com sucesso"', safe=False)
+        return JsonResponse('Falha ao atualizar os dados da semana', safe=True)
+
+    elif request.method == 'DELETE':
+        week = Week.objects.get(id=id)
+        week.delete()
+        return JsonResponse('Semana Excluída!', safe=False)
+
+
+@csrf_exempt
+def get_week_purchase(request, purchase_id):
     if (request.method == 'GET'):
         purchase = Purchase.objects.get(id=purchase_id)
         week= Week.objects.get(id=purchase.week.id)
         wc_serializer = serializers.WeekSerializer(week, many=False)
         return JsonResponse(wc_serializer.data, safe=False)
+
 
 @csrf_exempt
 def get_last_week(request):
