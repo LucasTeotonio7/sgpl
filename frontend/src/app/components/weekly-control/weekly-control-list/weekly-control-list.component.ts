@@ -4,7 +4,8 @@ import { ProductService } from 'src/app/components/product/services/product.serv
 import { FormactDateMonthDay } from '../../utils';
 import { WeeklyControlService } from '../services/weekly-control.service'
 import { Week } from '../weekly-control-form/week.model';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { WeekComponent } from '../week/week.component';
 
 export interface DialogData {
   object: string;
@@ -50,17 +51,17 @@ export class WeeklyControlListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.WeeklyControlService.getWeeklyControlList().subscribe(data => {
-      this.dataSource = data;
-    })
     this.WeeklyControlService.getLastWeek().subscribe(data => {
       this.week = data;
+      this.WeeklyControlService.getWeeklyControlList(data.date_start, data.date_end).subscribe(data => {
+        this.dataSource = data;
+      })
       this.weekView.date_start = FormactDateMonthDay(data.date_start)
       this.weekView.date_end = FormactDateMonthDay(data.date_end)
 
       this.ProductService.getProduct(data.product).subscribe(data => {
         this.product = data;
-        console.log(this.product)
+        console.log(this.week)
       });
 
     })
@@ -68,33 +69,15 @@ export class WeeklyControlListComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, object: this.object}
+    const weekRef = this.dialog.open(WeekComponent, {
+      width: '500px',
+      data: this.week
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    weekRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.object = result;
     });
   }
-
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'modal.component.html',
-})
-export class DialogOverviewExampleDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-
 
 }
