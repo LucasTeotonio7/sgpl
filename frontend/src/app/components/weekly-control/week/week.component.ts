@@ -10,18 +10,28 @@ import { string_to_datetime, FormactDate } from '../../utils';
 })
 export class WeekComponent implements OnInit {
 
+  new_week: Week = {
+    date_start:'',
+    date_end:'',
+    product: null
+  }
+
   constructor(
     public weekRef: MatDialogRef<WeekComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Week) {}
 
   ngOnInit(): void {
-    //TODO: Bug -> in the open and close of the modal, days are added infinitely
+    //fill new_week
+    this.new_week.date_start = this.data.date_start
+    this.new_week.date_end = this.data.date_end
+    this.new_week.product = this.data.product
+
     let date_start = string_to_datetime(this.data.date_start)
     let date_end = string_to_datetime(this.data.date_end)
     date_start.setDate(date_start.getDate() + 7)
     date_end.setDate(date_start.getDate() + 6)
-    this.data.date_start = FormactDate(date_start)
-    this.data.date_end = FormactDate(date_end)
+    this.new_week.date_start = FormactDate(date_start)
+    this.new_week.date_end = FormactDate(date_end)
   }
 
   cancel(): void{

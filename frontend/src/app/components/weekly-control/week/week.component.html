@@ -5,16 +5,16 @@
     <form>
         <mat-form-field>
             <input matInput placeholder="Produto"
-            [(ngModel)]="data.product" name="nomeFornecedor">
+            [(ngModel)]="new_week.product" name="nomeFornecedor">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Data de Inicio"
-            [(ngModel)]="data.date_start" name="date-start" type="date">
+            [(ngModel)]="new_week.date_start" name="date-start" type="date">
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Data de Encerramento"
-            [(ngModel)]="data.date_end" name="date-end" type="date" disabled>
+            [(ngModel)]="new_week.date_end" name="date-end" type="date" disabled>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
