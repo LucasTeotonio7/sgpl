@@ -33,24 +33,24 @@ export function stringToWeekday(date_str){
     return new Date(date_str + ' 00:00:00').getDay();
   }
 
-  export function dateWeekdayName(date){
-    var day = date.getDay();
-    switch (day) {
-      case 0:
-        return 'DOM';
-      case 1:
-        return 'SEG';
-      case 2:
-        return 'TER';
-      case 3:
-        return 'QUA';
-      case 4:
-        return 'QUI';
-      case 5:
-        return 'SEX';
-      case 6:
-        return 'SAB';
-      default:
-        console.log(`Sorry, we are out of ${day}.`);
-    }
+export function dateWeekdayName(date){
+  var day = date.getDay();
+  switch (day) {
+    case 0:
+      return 'DOM';
+    case 1:
+      return 'SEG';
+    case 2:
+      return 'TER';
+    case 3:
+      return 'QUA';
+    case 4:
+      return 'QUI';
+    case 5:
+      return 'SEX';
+    case 6:
+      return 'SAB';
+    default:
+      console.log(`Sorry, we are out of ${day}.`);
   }
+}
