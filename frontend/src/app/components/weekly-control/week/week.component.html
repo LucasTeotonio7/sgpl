@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-title>
+        Nova Semana
+    </mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Produto"
+            [(ngModel)]="data.product" name="nomeFornecedor">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data de Inicio"
+            [(ngModel)]="data.date_start" name="date-start" type="date">
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Data de Encerramento"
+            [(ngModel)]="data.date_end" name="date-end" type="date" disabled>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </form>
+    <button mat-raised-button color='primary' (click)='createWeek()'>
+        Salvar
+    </button>
+
+    <button mat-raised-button (click)='cancel()'>
+        Cancelar
+    </button>
+</mat-card>
