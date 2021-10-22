@@ -67,7 +67,7 @@ export class WeeklyControlFormComponent implements OnInit {
         })
         //get week
         //TODO: GETWEEK (WEEK.ID) !
-        this.WeeklyControlService.getWeek(this.purchase.id).subscribe(data=>{
+        this.WeeklyControlService.getWeekPurchase(this.purchase.id).subscribe(data=>{
           this.week = data
           this.weekView.date_start = string_to_datetime(this.week.date_start)
           this.weekView.date_end = string_to_datetime(this.week.date_end)
