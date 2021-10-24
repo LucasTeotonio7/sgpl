@@ -61,7 +61,6 @@ export class WeeklyControlListComponent implements OnInit {
 
       this.ProductService.getProduct(data.product).subscribe(data => {
         this.product = data;
-        console.log(this.week)
       });
 
     })
@@ -77,6 +76,7 @@ export class WeeklyControlListComponent implements OnInit {
     weekRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.object = result;
+      this.ngOnInit()
     });
   }
 
