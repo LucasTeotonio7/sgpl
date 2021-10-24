@@ -18,8 +18,8 @@ export class WeeklyControlService {
     return this.http.get<any[]>(this.apiUrl + `/weekly-collection/${date_start}/${date_end}/`);
   }
 
-  getWeeklyCollection(id: string): Observable<WeeklyCollection[]> {
-    return this.http.get<WeeklyCollection[]>(this.apiUrl + `/weekly-collection-list/${'2021-09-27'}/${'2021-10-03'}/${id}`);
+  getWeeklyCollection(date_start: string, date_end: string, id: string): Observable<WeeklyCollection[]> {
+    return this.http.get<WeeklyCollection[]>(this.apiUrl + `/weekly-collection-list/${date_start}/${date_end}/${id}`);
   }
 
   addWeeklyCollection(WeeklyCollection: WeeklyCollection) {

@@ -6,6 +6,7 @@ from weeklycontrol.views.views_weekly_collection \
 from weeklycontrol.views.views_weekly_control import weekly_collection
 
 urlpatterns=[
+    url(r'^week/$', weektApi),
     url(r'^week/([0-9]+)$', weektApi),
     url(r'^week-purchase/([0-9]+)$', get_week_purchase),
     url(r'^last-week/$',get_last_week),

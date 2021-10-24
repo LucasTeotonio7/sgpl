@@ -3,18 +3,25 @@
         Nova Semana
     </mat-card-title>
     <form>
-        <mat-form-field>
-            <input matInput placeholder="Produto"
-            [(ngModel)]="data.product" name="nomeFornecedor">
+        <mat-form-field appearance="fill">
+            <mat-label>Produto</mat-label>
+            <mat-select matInput [(ngModel)]="selectedProduct" name="product" placeholder="Selecione o produto">
+              <mat-option *ngFor="let product of products"
+              value="{{product.id}}" >{{product.name}}</mat-option>
+            </mat-select>
         </mat-form-field>
+        <!-- <mat-form-field>
+            <input matInput placeholder="Produto"
+            [(ngModel)]="new_week.product" name="nomeFornecedor">
+        </mat-form-field> -->
         <mat-form-field>
             <input matInput placeholder="Data de Inicio"
-            [(ngModel)]="data.date_start" name="date-start" type="date">
+            [(ngModel)]="new_week.date_start" name="date-start" type="date">
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Data de Encerramento"
-            [(ngModel)]="data.date_end" name="date-end" type="date" disabled>
+            [(ngModel)]="new_week.date_end" name="date-end" type="date">
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 

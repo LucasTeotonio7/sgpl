@@ -72,7 +72,7 @@ export class WeeklyControlFormComponent implements OnInit {
           this.weekView.date_start = string_to_datetime(this.week.date_start)
           this.weekView.date_end = string_to_datetime(this.week.date_end)
           //get weekly collection
-          this.WeeklyControlService.getWeeklyCollection(id).subscribe(data => {
+          this.WeeklyControlService.getWeeklyCollection(this.week.date_start,this.week.date_end, id).subscribe(data => {
             this.WeeklyControlValues = data;
             this.FillDataSource(this.week, this.WeeklyControlValues)
             this.generatedisplayedColumns(this.week.date_start)

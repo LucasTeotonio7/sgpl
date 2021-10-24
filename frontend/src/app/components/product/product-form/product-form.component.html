@@ -9,7 +9,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Unidade de Medida</mat-label>
-            <mat-select matInput [(ngModel)]="product.unit_measurement" name="Unidade" placeholder="Select A Holiday">
+            <mat-select matInput [(ngModel)]="product.unit_measurement" name="Unidade" placeholder="Unidade de Medida">
               <mat-option *ngFor="let choice of choices"
               value="{{choice.key}}" >{{choice.name}}</mat-option>
             </mat-select>
