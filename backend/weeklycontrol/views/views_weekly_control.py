@@ -27,7 +27,7 @@ def weekly_collection(request, date_start, date_end):
         weekly_collection_json = []
         #TODO: product -> refactor get the product id, id=1 for testing
         product = Product.objects.get(id=1)
-        for supplier in Supplier.objects.all():
+        for supplier in Supplier.objects.all().order_by('name'):
             has_purchase = False
             for purchase in purchases:
                 if purchase.supplier.id == supplier.id:
