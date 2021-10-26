@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Product } from '../../product/models/product.model';
 import { ProductService } from 'src/app/components/product/services/product.service';
 import { FormactDateMonthDay } from '../../utils';
@@ -6,6 +6,8 @@ import { WeeklyControlService } from '../services/weekly-control.service'
 import { Week } from '../weekly-control-form/week.model';
 import { MatDialog } from '@angular/material/dialog';
 import { WeekComponent } from '../week/week.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface DialogData {
   object: string;
@@ -20,7 +22,7 @@ export interface DialogData {
 export class WeeklyControlListComponent implements OnInit {
 
 
-  dataSource: any = []
+  // dataSource: any = []
 
   weekView: any = {
     date_start:'',
@@ -49,12 +51,16 @@ export class WeeklyControlListComponent implements OnInit {
               private ProductService: ProductService,
               public dialog: MatDialog) {}
 
+  dataSource = new MatTableDataSource;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
 
   ngOnInit(): void {
     this.WeeklyControlService.getLastWeek().subscribe(data => {
       this.week = data;
       this.WeeklyControlService.getWeeklyControlList(data.date_start, data.date_end).subscribe(data => {
-        this.dataSource = data;
+        this.dataSource = new MatTableDataSource<any>(data);
+        this.dataSource.paginator = this.paginator;
       })
       this.weekView.date_start = FormactDateMonthDay(data.date_start)
       this.weekView.date_end = FormactDateMonthDay(data.date_end)
