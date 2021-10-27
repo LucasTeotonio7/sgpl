@@ -1,12 +1,9 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-from products.models import Product, Purchase
-
-from products import models
-from suppliers.models import Supplier
+from products.models import Purchase
 from weeklycontrol import serializers
-from weeklycontrol.models import WeeklyCollection, Week
+from weeklycontrol.models import Week
 
 from django.core.files.storage import default_storage
 import json
@@ -62,3 +59,12 @@ def get_last_week(request):
         week= Week.objects.latest('pk')
         wc_serializer = serializers.WeekSerializer(week, many=False)
         return JsonResponse(wc_serializer.data, safe=False)
+
+
+@csrf_exempt
+def get_weeks_to_product(request, product):
+    if (request.method == 'GET'):
+        week = Week.objects.filter(product=product).order_by('pk')
+        weeks_serializer = serializers.WeekSerializer(week, many=True)
+        return JsonResponse(weeks_serializer.data, safe=False)
+
