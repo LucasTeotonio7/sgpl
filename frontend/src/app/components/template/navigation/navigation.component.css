@@ -34,7 +34,7 @@
 }
 
 .nav-list .mat-list-item:hover{
-    color: #5928B1;
+    color: #00b4d8;
     transition: 0.6s;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .nav-list .mat-list-item.active{
-    background-color: #a53bf0;
+    background-color: #00b4d8;
     color: #fff;
     border-radius: 10px;
     padding: 0;

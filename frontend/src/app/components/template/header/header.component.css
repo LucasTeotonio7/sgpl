@@ -1,7 +1,7 @@
 .header{
     display: flex;
     align-items: center;
-    background-color: #7209b7;
+    background-color: #0096c7;
     position: fixed;
     z-index: 1000;
 }
