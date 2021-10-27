@@ -1,5 +1,5 @@
 <div class="week-date">
-  <button mat-icon-button>
+  <button mat-icon-button (click)="lastWeek()">
     <mat-icon title="Voltar uma semana">arrow_back</mat-icon>
   </button>
 
@@ -18,7 +18,7 @@
     PRODUTO: {{product.name|uppercase}}
   </label>
 
-  <button mat-icon-button>
+  <button mat-icon-button (click)="nextWeek()">
     <mat-icon title="Avançar uma Semana">arrow_forward</mat-icon>
   </button>
 
