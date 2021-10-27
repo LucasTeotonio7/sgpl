@@ -56,4 +56,8 @@ export class WeeklyControlService {
     return this.http.get<Week>(this.apiUrl + `/last-week/`);
   }
 
+  getWeeks(product: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl + `/weeks/${product}`);
+  }
+
 }
