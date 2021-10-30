@@ -1,22 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
-.new-week{
-    margin-top: 80px;
-    margin-left: 5%;
-    margin-bottom: 10px;
-    float: right;
-    margin-right: 12%;
-}
-
 .week-date{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    height: 20px;
-    width: 80%;
-    margin-left: 5%;
+    border-radius: 10px 10px 0 0;
+    width: 96%;
+    padding: 10px 0;
+    margin: 90px 2% 0 2%;
     font-family: 'Poppins';
+    border: 1px solid rgb(242, 242, 242);
+    color: #003049;
+}
+
+button mat-icon{
+    padding: 3px;
+    border-radius: 50%;
+    background-color: #003049;
+    color:#fff;
+}
+
+.new-week{
+    font-family: 'Poppins';
+    text-transform: uppercase;
+    font-size: 12px;
+    background-color: #3a86ff;
+    color: #fff;
+    transition: 0.4s;
+}
+
+
+
+.new-week i{
+    font-weight: 300;
 }
 
 .week-date label{
@@ -30,13 +47,14 @@
 }
 
 .week-date .date{
-   display: flex !important;
-   justify-content: center;
-   align-items: center;
-   justify-content: center;
-   width: 100px;
-   height: 45px;
-   border-radius: 5px;
+    position: relative;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 45px;
+    border-radius: 5px;
 }
 
 .week-date .date i{
@@ -57,23 +75,33 @@
 
 .week-date .date .start::before{
     content: 'Data Início';
-    color: rgb(4, 106, 4);
+    color: rgb(7, 175, 7);
 }
 
 .week-date .date .end::before{
     content: 'Data Fim';
-    color: rgb(194, 19, 19);
+    color: rgb(238, 25, 25);
 }
 
 table{
     width: 100%;
-    padding: 0% 5% 0% 5%;
+    padding: 0% 2% 0% 2%;
     font-family: "Poppins";
 }
 
 th{
-    font-weight: 800;
+    background-color: #003049;
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, 0.165);
+}
+
+td{
     color: #000;
+    font-size: 0.9em;
+}
+
+table .qtd{
+    font-weight: bold;
 }
 
 mat-paginator{

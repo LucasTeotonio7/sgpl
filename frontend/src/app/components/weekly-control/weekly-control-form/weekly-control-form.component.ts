@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from '../../supplier/supplier-list/supplier.model';
-import { FormactDate, string_to_datetime, stringToWeekday, dateWeekdayName } from '../../utils';
+import { FormactDate, string_to_datetime, dateWeekdayName, FormactDateMonthDay } from '../../utils';
 import { WeeklyControlService } from '../services/weekly-control.service'
-import { Week, WeeklyCollection, weekView } from '../weekly-control-form/week.model';
+import { Week, WeeklyCollection } from '../weekly-control-form/week.model';
 import { SupplierService } from 'src/app/components/supplier/services/supplier.service';
 import { PurchaseService } from 'src/app/components/product/services/purchase.service';
 import { Purchase } from '../../product/models/purchase.model';
+import { Product } from '../../product/models/product.model';
+import { ProductService } from '../../product/services/product.service';
+import * as $ from "jquery";
 
 @Component({
   selector: 'sgpl-weekly-control-form',
@@ -26,7 +29,7 @@ export class WeeklyControlFormComponent implements OnInit {
     product: null
   }
 
-  weekView: weekView = {
+  weekView: any = {
     date_start:null,
     date_end:null
   }
@@ -47,8 +50,19 @@ export class WeeklyControlFormComponent implements OnInit {
     week: 0,
   }
 
+  product: Product = {
+    id: null,
+    name:'',
+    unit_measurement: '',
+    registration_date: '',
+    purchase_price: null
+  }
+
+  total = 0
+
   constructor(private WeeklyControlService: WeeklyControlService,
               private SupplierService: SupplierService,
+              private ProductService: ProductService,
               private PurchaseService: PurchaseService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -69,8 +83,12 @@ export class WeeklyControlFormComponent implements OnInit {
         //TODO: GETWEEK (WEEK.ID) !
         this.WeeklyControlService.getWeekPurchase(this.purchase.id).subscribe(data=>{
           this.week = data
-          this.weekView.date_start = string_to_datetime(this.week.date_start)
-          this.weekView.date_end = string_to_datetime(this.week.date_end)
+          this.weekView.date_start = FormactDateMonthDay(data.date_start)
+          this.weekView.date_end = FormactDateMonthDay(data.date_end)
+          //get product
+          this.ProductService.getProduct(data.product).subscribe(data => {
+            this.product = data;
+          });
           //get weekly collection
           this.WeeklyControlService.getWeeklyCollection(this.week.date_start,this.week.date_end, id).subscribe(data => {
             this.WeeklyControlValues = data;
@@ -141,5 +159,12 @@ export class WeeklyControlFormComponent implements OnInit {
       }
     }
 
+  }
+
+  FormactDateMonthDay(data) {
+    data = new Date(data + ' 00:00:00');
+    var day = String(data.getDate()).padStart(2, '0');
+    var month = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"][data.getMonth()];
+    return day + ', ' + month;
   }
 }

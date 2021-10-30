@@ -17,6 +17,7 @@
         <mat-form-field>
             <input matInput placeholder="Preço de Compra"
             [(ngModel)]="product.purchase_price" name="precoCompra" type="number">
+            <span matPrefix>R$&nbsp;</span>
         </mat-form-field>
     </form>
     <button *ngIf="product.id == null" mat-raised-button color='primary' (click)='createProduct()'>

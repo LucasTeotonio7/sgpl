@@ -3,6 +3,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.quantity .mat-form-field-infix {
+    width: 100% !important;
+}
+
 .action-button > i{
     color: #fff;
     padding: 5px;

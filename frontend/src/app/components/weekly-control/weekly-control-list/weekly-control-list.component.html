@@ -1,13 +1,6 @@
-<button mat-raised-button color='primary' class="new-week" (click)="openDialog()">
-  <i class="material-icons">
-    add
-  </i>
-  Nova Semana
-</button>
-
-<mat-card class="week-date">
-  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-    <mat-icon>arrow_back</mat-icon>
+<div class="week-date">
+  <button mat-icon-button (click)="lastWeek()">
+    <mat-icon title="Voltar uma semana">arrow_back</mat-icon>
   </button>
 
   <div class="date">
@@ -25,65 +18,72 @@
     PRODUTO: {{product.name|uppercase}}
   </label>
 
-  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-    <mat-icon>arrow_forward</mat-icon>
+  <button mat-icon-button (click)="nextWeek()">
+    <mat-icon title="Avançar uma Semana">arrow_forward</mat-icon>
   </button>
 
-</mat-card>
+  <button mat-raised-button class="new-week" (click)="openDialog()">
+    <i class="material-icons">
+      control_point
+    </i>
+    Nova Semana
+  </button>
+
+</div>
 
 <table mat-table [dataSource]="dataSource">
     <!-- Name Column -->
     <ng-container matColumnDef="name_supplier">
       <th mat-header-cell *matHeaderCellDef>NOME</th>
-      <td mat-cell *matCellDef="let row">{{row.name_supplier}}</td>
+      <td mat-cell *matCellDef="let row">{{row.name_supplier | uppercase}}</td>
     </ng-container>
 
     <!-- SEG Column -->
     <ng-container matColumnDef="mon">
       <th mat-header-cell *matHeaderCellDef>SEG</th>
-      <td mat-cell *matCellDef="let row">{{row.day1}}</td>
+      <td mat-cell *matCellDef="let row" class="day">{{row.day1}}</td>
     </ng-container>
 
     <!-- TER Column -->
     <ng-container matColumnDef="tue">
       <th mat-header-cell *matHeaderCellDef>TER</th>
-      <td mat-cell *matCellDef="let row">{{row.day2}}</td>
+      <td mat-cell *matCellDef="let row" class="day">{{row.day2}}</td>
     </ng-container>
 
     <!-- QUA Column -->
     <ng-container matColumnDef="wed">
       <th mat-header-cell *matHeaderCellDef>QUA</th>
-      <td mat-cell *matCellDef="let row">{{row.day3}}</td>
+      <td mat-cell *matCellDef="let row" class="day">{{row.day3}}</td>
     </ng-container>
 
     <!-- QUI Column -->
     <ng-container matColumnDef="thu">
       <th mat-header-cell *matHeaderCellDef>QUI</th>
-      <td mat-cell *matCellDef="let row">{{row.day4}}</td>
+      <td mat-cell *matCellDef="let row" class="day">{{row.day4}}</td>
     </ng-container>
 
     <!-- SEX Column -->
     <ng-container matColumnDef="fri">
       <th mat-header-cell *matHeaderCellDef>SEX</th>
-      <td mat-cell *matCellDef="let row">{{row.day5}}</td>
+      <td mat-cell *matCellDef="let row" class="day">{{row.day5}}</td>
     </ng-container>
 
     <!-- SAB Column -->
     <ng-container matColumnDef="sat">
       <th mat-header-cell *matHeaderCellDef>SAB</th>
-      <td mat-cell *matCellDef="let row">{{row.day6}}</td>
+      <td mat-cell *matCellDef="let row" class="day">{{row.day6}}</td>
     </ng-container>
 
     <!-- DOM Column -->
     <ng-container matColumnDef="sun">
       <th mat-header-cell *matHeaderCellDef>DOM</th>
-      <td mat-cell *matCellDef="let row">{{row.day7}}</td>
+      <td mat-cell *matCellDef="let row" class="day">{{row.day7}}</td>
     </ng-container>
 
     <!-- quantity Column -->
     <ng-container matColumnDef="qty">
       <th mat-header-cell *matHeaderCellDef>QTD</th>
-      <td mat-cell *matCellDef="let row">{{row.total_qty}}</td>
+      <td mat-cell *matCellDef="let row" class="qtd">{{row.total_qty}}</td>
     </ng-container>
 
     <!-- product_price Column -->
@@ -113,9 +113,9 @@
                   edit
               </i>
           </a>
-          <a *ngIf="row.purchase_id == 0" routerLink="gerar-compra/{{week.product}}/{{week.id}}/{{row.supplier_id}}" title="Editar" class="action-button edit">
+          <a *ngIf="row.purchase_id == 0" routerLink="gerar-compra/{{week.product}}/{{week.id}}/{{row.supplier_id}}" title="Novo Registro" class="action-button edit">
             <i class="material-icons">
-                edit
+              add
             </i>
         </a>
           <a routerLink="pagar/{{row.purchase_id}}" title="Pagar Fornecedor" class="action-button pay">
@@ -130,4 +130,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
