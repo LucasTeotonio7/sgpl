@@ -8,8 +8,8 @@ table{
 }
 
 th{
-    font-weight: 800;
-    color: #000;
+    background-color: #003049;
+    color: #fff;
 }
 
 mat-paginator{
