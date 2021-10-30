@@ -1,18 +1,19 @@
-<section class="week-date">
-  <mat-form-field appearance="fill" class="date-start">
-    <mat-label>INÍCIO DA SEMANA</mat-label>
-    <input matInput [(ngModel)]="weekView.date_start" name="data" [matDatepicker]="picker1" disabled>
-    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-  </mat-form-field>
+<div class="week-date">
+  <div class="date">
+    <i class="material-icons">date_range</i>
+    <p class="start">{{weekView.date_start}}</p>
+  </div>
 
-  <mat-form-field appearance="fill" class="date-end">
-    <mat-label>ENCERRAMENTO DA SEMANA</mat-label>
-    <input matInput [(ngModel)]="weekView.date_end" name="data" [matDatepicker]="picker2" disabled>
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
-</section>
+  <div class="date">
+    <i class="material-icons">date_range</i>
+    <p class="end">{{weekView.date_end}}</p>
+  </div>
+
+  <label>
+    <i class="material-icons">inventory_2</i>
+    PRODUTO: {{product.name|uppercase}}
+  </label>
+</div>
 
 <section class="supplier-header">
   <mat-card>
@@ -20,17 +21,31 @@
   </mat-card>
 </section>
 
-<table class="mat-elevation-z3">
-  <tr class="mat-elevation-z1">
-      <td *ngFor="let day of displayedColumns">{{day}}</td>
-  </tr>
+<table>
+  <th *ngFor="let day of displayedColumns">{{day}}</th>
   <tr>
     <td *ngFor="let row of dataSource">
-      <input matInput [(ngModel)]="row.quantity" placeholder="-" type="number" name="day1">
+      <mat-form-field appearance="legacy" class="quantity" floatLabel="always">
+        <mat-label>{{FormactDateMonthDay(row.date)}}</mat-label>
+        <input matInput [(ngModel)]="row.quantity" placeholder="-" type="number" name="quantity">
+      </mat-form-field>
     </td>
   </tr>
 </table>
+<span class="help-text">
+  <i class="material-icons">
+    info
+  </i>
+  Selecione o dia que deseja atribuir um valor
+</span>
 
+<section class="valores">
+  <mat-card>
+    <label>TOTAL ({{product.unit_measurement}}): {{total}}</label>
+    <label>VALOR DE COMPRA (R$): {{product.purchase_price}} </label>
+    <label>VALOR TOTAL (R$): {{total}} </label>
+  </mat-card>
+</section>
 
 <div class="buttons">
   <button mat-raised-button (click)='cancelar()'>
