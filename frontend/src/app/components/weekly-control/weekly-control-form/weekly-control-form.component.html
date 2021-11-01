@@ -17,7 +17,7 @@
 
 <section class="supplier-header">
   <mat-card>
-    <label>FORNECEDOR: {{supplier.name}}</label>
+    <label>FORNECEDOR: {{supplier.name|uppercase}}</label>
   </mat-card>
 </section>
 
@@ -25,9 +25,9 @@
   <th *ngFor="let day of displayedColumns">{{day}}</th>
   <tr>
     <td *ngFor="let row of dataSource">
-      <mat-form-field appearance="legacy" class="quantity" floatLabel="always">
+      <mat-form-field appearance="legacy" color="accent" class="quantity" floatLabel="always">
         <mat-label>{{FormactDateMonthDay(row.date)}}</mat-label>
-        <input matInput [(ngModel)]="row.quantity" placeholder="-" type="number" name="quantity">
+        <input matInput [(ngModel)]="row.quantity" placeholder="-" type="number" name="quantity" (ngModelChange)='fillProductQuantity()'>
       </mat-form-field>
     </td>
   </tr>
@@ -41,9 +41,9 @@
 
 <section class="valores">
   <mat-card>
-    <label>TOTAL ({{product.unit_measurement}}): {{total}}</label>
-    <label>VALOR DE COMPRA (R$): {{product.purchase_price}} </label>
-    <label>VALOR TOTAL (R$): {{total}} </label>
+    <label>TOTAL : {{product_quantity}} {{product.unit_measurement}}</label>
+    <label>VALOR DE COMPRA : R$ {{product.purchase_price}} </label>
+    <label>VALOR TOTAL : R$ {{(product_quantity * product.purchase_price)}} </label>
   </mat-card>
 </section>
 

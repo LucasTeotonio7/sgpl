@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from '../../supplier/supplier-list/supplier.model';
 import { FormactDate, string_to_datetime, dateWeekdayName, FormactDateMonthDay } from '../../utils';
@@ -58,7 +58,7 @@ export class WeeklyControlFormComponent implements OnInit {
     purchase_price: null
   }
 
-  total = 0
+  product_quantity = 0
 
   constructor(private WeeklyControlService: WeeklyControlService,
               private SupplierService: SupplierService,
@@ -97,6 +97,17 @@ export class WeeklyControlFormComponent implements OnInit {
           });
         })
       })
+    }
+
+  }
+
+  fillProductQuantity(){
+    //fill total
+    this.product_quantity = 0;
+    for (var i=0; i < this.dataSource.length; i++) {
+      if(this.dataSource[i].quantity !== null){
+        this.product_quantity += this.dataSource[i].quantity
+      }
     }
   }
 
@@ -156,6 +167,12 @@ export class WeeklyControlFormComponent implements OnInit {
         }
         this.dataSource.push(new_collection)
         date_start.setDate(date_start.getDate() + 1)
+      }
+    }
+    //fill total
+    for (var i=0; i < this.dataSource.length; i++) {
+      if(this.dataSource[i].quantity !== null){
+        this.product_quantity += this.dataSource[i].quantity
       }
     }
 
