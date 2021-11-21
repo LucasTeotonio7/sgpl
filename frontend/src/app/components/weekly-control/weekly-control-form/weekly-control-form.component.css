@@ -3,8 +3,8 @@
 
 .supplier-header{
     width: 96%;
-    padding: 10px 0;
-    margin: 0px 2% 0 2%;
+    padding: 5px 0;
+    margin: 0 2% 0 2%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +12,9 @@
 
 .supplier-header mat-card{
     width: 100%;
+    background-color: #003049;
+    color: #fff;
+
 }
 
 
