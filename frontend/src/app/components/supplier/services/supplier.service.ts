@@ -9,7 +9,7 @@ import { Supplier } from '../supplier-list/supplier.model';
   providedIn: 'root'
 })
 export class SupplierService {
-  readonly apiUrl = "http://127.0.0.1:8000";
+  readonly apiUrl = "http://127.0.0.1:8000/suppliers";
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -35,11 +35,11 @@ export class SupplierService {
   }
 
   updateSupplier(supplier: Supplier) {
-    return this.http.put(this.apiUrl + '/supplier/', supplier);
+    return this.http.put(`${this.apiUrl}/supplier/${supplier.id}`, supplier);
   }
 
   deleteSupplier(supplier: Supplier) {
-    return this.http.delete(this.apiUrl + '/supplier/' + supplier.id);
+    return this.http.delete(`${this.apiUrl}/supplier/${supplier.id}`);
   }
 
 }
