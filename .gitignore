@@ -5,3 +5,4 @@ i-con.ico
 backend/backend/settings.py
 backend/.env
 __pycache__
+sgpl-env
